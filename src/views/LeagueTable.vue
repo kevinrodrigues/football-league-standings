@@ -2,7 +2,8 @@
   <div class="about">
     <h1>This is the league table</h1>
 
-    <table-switcher @click="onToggleSwitcherState" />
+    <button
+      @click="onToggleSwitcherState()">Toggle Average / Total</button>
 
     <table>
       <tr class="table-heading">
@@ -39,13 +40,8 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
-import TableSwitcher from '../components/TableSwitcher.vue';
 
 export default {
-  components: {
-    TableSwitcher,
-  },
-
   data: () => ({
     toggleSwitcherActive: true,
   }),
@@ -60,7 +56,7 @@ export default {
           ? this.leagueTable.sort((a, b) => b.ave - a.ave)
           : this.leagueTable.sort((a, b) => b.total - a.total);
       }
-    }
+    },
   },
 
   mounted() {
@@ -86,6 +82,7 @@ export default {
 
     onToggleSwitcherState() {
       this.toggleSwitcherActive = !this.toggleSwitcherActive;
+      console.log(this.toggleSwitcherActive);
     }
   }
 };
