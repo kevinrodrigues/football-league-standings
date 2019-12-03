@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import leagueResults from '../services/standings/index';
 
 Vue.use(Vuex);
 
@@ -8,64 +9,22 @@ export default new Vuex.Store({
     leagueTable: null,
   },
   actions: {
-    getLeagueStandings({ commit }) {
-      commit('getLeagueStandings', [{
-        players: 'Kevin',
-        played: 8,
-        won: 7,
-        draw: 0,
-        lost: 1,
-        ps: 0,
-        doOut: 0,
-        late: 0,
-        mom: 0,
-        total: 0,
-        ave: 0,
-      },
-      {
-        players: 'Sam',
-        played: 5,
-        won: 4,
-        draw: 0,
-        lost: 1,
-        ps: 0,
-        doOut: 0,
-        late: 0,
-        mom: 0,
-        total: 0,
-        ave: 0,
-      },
-      {
-        players: 'Kelly',
-        played: 6,
-        won: 1,
-        draw: 0,
-        lost: 0,
-        ps: 0,
-        doOut: 0,
-        late: 0,
-        mom: 8,
-        total: 0,
-        ave: 0,
-      },
-      {
-        players: 'Foo',
-        played: 10,
-        won: 8,
-        draw: 2,
-        lost: 0,
-        ps: 0,
-        doOut: 0,
-        late: 0,
-        mom: 4,
-        total: 0,
-        ave: 0,
-      }]);
+    getLeagueStandings: ({ commit }) => {
+      const leagueStandingsResponse = leagueResults.getLeagueResults();
+
+      if (leagueStandingsResponse) {
+        commit('getLeagueStandings', leagueStandingsResponse);
+      }
     },
   },
   mutations: {
     getLeagueStandings(state, payload) {
       state.leagueTable = payload;
     },
+  },
+  getters: {
+    sortByAverage: ({ leagueTable }) => leagueTable.sort((a, b) => b.ave - a.ave),
+
+    sortByTotal: ({ leagueTable }) => leagueTable.sort((a, b) => b.total - a.total),
   },
 });

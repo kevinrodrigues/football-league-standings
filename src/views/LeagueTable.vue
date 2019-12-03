@@ -2,8 +2,10 @@
   <div class="about">
     <h1>This is the league table</h1>
 
-    <button
-      @click="onToggleSwitcherState()">Toggle Average / Total</button>
+    <input type="checkbox" id="switch" />
+    <label for="switch" @click="onToggleSwitcherState">Toggle</label>
+
+    <h3>{{ getSwitchedStateHeading }}</h3>
 
     <table>
       <tr class="table-heading">
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions, mapGetters } from 'vuex';
 
 export default {
   data: () => ({
@@ -49,14 +51,23 @@ export default {
   computed: {
     ...mapState(['leagueTable']),
 
+    ...mapGetters([
+      'sortByAverage',
+      'sortByTotal',
+    ]),
+
     /* eslint-disable */
     sortedLeagueStandings() {
       if (this.leagueTable) {
         return this.toggleSwitcherActive
-          ? this.leagueTable.sort((a, b) => b.ave - a.ave)
-          : this.leagueTable.sort((a, b) => b.total - a.total);
+          ? this.sortByAverage
+          : this.sortByTotal;
       }
     },
+
+    getSwitchedStateHeading() {
+      return this.toggleSwitcherActive ? 'Average' : 'Total';
+    }
   },
 
   mounted() {
@@ -82,7 +93,6 @@ export default {
 
     onToggleSwitcherState() {
       this.toggleSwitcherActive = !this.toggleSwitcherActive;
-      console.log(this.toggleSwitcherActive);
     }
   }
 };
@@ -136,5 +146,47 @@ export default {
   float:left;
   padding: 5px 10px;
   border: 1px solid #eee;
+}
+
+input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 200px;
+  height: 100px;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: #bada55;
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 130px;
 }
 </style>
