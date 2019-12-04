@@ -1,11 +1,15 @@
 <template>
   <div class="hello">
-    Thursday Football
+    {{ msg }}
   </div>
 </template>
 
 <script>
-
+export default {
+  props: {
+    msg: String,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

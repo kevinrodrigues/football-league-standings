@@ -21,20 +21,30 @@
         <th>Total</th>
         <th>Ave</th>
       </tr>
+
       <tr v-for="item in sortedLeagueStandings"
           :key="item.id"
           class="table-stats">
-        <td>{{ item.players }}</td>
-        <td>{{ item.played }}</td>
-        <td>{{ item.won }}</td>
-        <td>{{ item.draw }}</td>
-        <td>{{ item.lost }}</td>
-        <td>{{ item.ps }}</td>
-        <td>{{ item.doOut }}</td>
-        <td>{{ item.late }}</td>
-        <td>{{ item.mom }}</td>
-        <td>{{ item.total }}</td>
-        <td>{{ item.ave }}</td>
+          <td>
+            <router-link
+              :to="{ path: 'player-bio',
+              name: 'player-bio',
+              params: { player: item.player },
+              query: { player: item.player },
+              props: true }">
+              {{ item.player }}
+            </router-link>
+          </td>
+          <td>{{ item.played }}</td>
+          <td>{{ item.won }}</td>
+          <td>{{ item.draw }}</td>
+          <td>{{ item.lost }}</td>
+          <td>{{ item.ps }}</td>
+          <td>{{ item.doOut }}</td>
+          <td>{{ item.late }}</td>
+          <td>{{ item.mom }}</td>
+          <td>{{ item.total }}</td>
+          <td>{{ item.ave }}</td>
       </tr>
     </table>
   </div>
