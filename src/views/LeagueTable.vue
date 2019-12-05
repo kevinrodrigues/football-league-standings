@@ -30,9 +30,10 @@
               :to="{ path: 'player-bio',
               name: 'player-bio',
               params: {
-                player: item.player
+                player: item.player,
+                won: item.won,
+                lost: item.lost
               },
-              query: { player: item.player },
               props: true }">
               {{ item.player }}
             </router-link>
