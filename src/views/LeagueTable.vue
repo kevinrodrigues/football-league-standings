@@ -29,7 +29,9 @@
             <router-link
               :to="{ path: 'player-bio',
               name: 'player-bio',
-              params: { player: item.player },
+              params: {
+                player: item.player
+              },
               query: { player: item.player },
               props: true }">
               {{ item.player }}
