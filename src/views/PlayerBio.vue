@@ -7,22 +7,34 @@
         </a>
 
         <h1>
-          Player: {{ player }}
+          {{ player }}
         </h1>
 
         <h2>
-          Won: {{ won }}
+          Won: <span>{{ won }}</span>
         </h2>
 
         <h2>
-          Lost: {{ lost }}
+          Lost: <span>{{ lost }}</span>
+        </h2>
+
+        <h2>
+          MoM: <span>{{ mom }}</span>
+        </h2>
+
+        <h2>
+          Total: <span>{{ total }}</span>
+        </h2>
+
+        <h2>
+          Ave: <span>{{ ave }}</span>
         </h2>
 
       </header>
 
       <div class="profile-bio">
         <p>
-          Player bio
+          Player bio - info
         </p>
       </div>
     </aside>
@@ -33,8 +45,11 @@
 export default {
   props: {
     player: String,
-    won: String,
-    lost: String,
+    won: Number,
+    lost: Number,
+    mom: Number,
+    total: Number,
+    ave: Number,
   },
 };
 </script>
@@ -103,6 +118,19 @@ export default {
     forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045)
     forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)
     forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  }
+
+  .profile-card h2 {
+    text-align: left;
+    padding: 5px;
+  }
+
+  .profile-card span {
+    float: right;
+  }
+
+  .profile-card h2:nth-child(odd) {
+    background-color: #f2f2f2;
   }
 
   .profile-card header {

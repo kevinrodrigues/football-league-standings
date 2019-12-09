@@ -3,7 +3,10 @@
     <h1>This is the league table</h1>
 
     <input type="checkbox" id="switch" />
-    <label for="switch" @click="onToggleSwitcherState">Toggle</label>
+    <label for="switch" @click="onToggleSwitcherState">
+      <span>Average</span>
+      <span>Total</span>
+    </label>
 
     <h3>{{ getSwitchedStateHeading }}</h3>
 
@@ -32,7 +35,10 @@
               params: {
                 player: item.player,
                 won: item.won,
-                lost: item.lost
+                lost: item.lost,
+                mom: item.mom,
+                total: item.total,
+                ave: item.ave
               },
               props: true }">
               {{ item.player }}
@@ -169,13 +175,24 @@ input[type=checkbox]{
 
 label {
   cursor: pointer;
-  text-indent: -9999px;
   width: 200px;
-  height: 100px;
-  background: grey;
+  height: 60px;
+  background: #42b983;
   display: block;
   border-radius: 100px;
   position: relative;
+}
+
+label span {
+  position: absolute;
+  top: 33%;
+  right: 36px;
+  z-index: 9;
+}
+
+label span:first-child {
+  left: 24px;
+  text-align: left;
 }
 
 label:after {
@@ -183,15 +200,11 @@ label:after {
   position: absolute;
   top: 5px;
   left: 5px;
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 50px;
   background: #fff;
   border-radius: 90px;
   transition: 0.3s;
-}
-
-input:checked + label {
-  background: #bada55;
 }
 
 input:checked + label:after {
