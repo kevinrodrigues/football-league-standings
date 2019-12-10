@@ -40,7 +40,8 @@
                 total: item.total,
                 ave: item.ave
               },
-              props: true }">
+              props: true }"
+              >
               {{ item.player }}
             </router-link>
           </td>
@@ -56,6 +57,7 @@
           <td>{{ item.ave }}</td>
       </tr>
     </table>
+
   </div>
 </template>
 

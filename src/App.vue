@@ -3,7 +3,9 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/league-standings">League Table</router-link> |
-      <a href="https://github.com/kevinrodrigues" target="_blank">Github</a>
+      <a href="https://github.com/kevinrodrigues" target="_blank">
+        <img src="https://img.shields.io/github/followers/kevinrodrigues?style=social" alt="">
+      </a>
     </div>
     <router-view/>
   </div>

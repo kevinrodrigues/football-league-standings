@@ -11,7 +11,7 @@ export default {
         ps: 0,
         doOut: 0,
         late: 0,
-        mom: 1,
+        mom: 2,
         total: 0,
         ave: 0,
       },
