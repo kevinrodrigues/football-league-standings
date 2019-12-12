@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>This is the league table</h1>
+    <h1>{ currentLeagueDay } league table</h1>
 
     <input type="checkbox" id="switch" />
     <label for="switch" @click="onToggleSwitcherState">
@@ -124,6 +124,7 @@ export default {
     border-collapse: collapse;
     width: 100%;
     margin: 0 auto;
+    background-color: #fff;
   }
 
   td, th {
@@ -183,6 +184,7 @@ label {
   display: block;
   border-radius: 100px;
   position: relative;
+  border: 1px solid #fff;
 }
 
 label span {
