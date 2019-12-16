@@ -104,7 +104,7 @@ export default {
         return this.leagueTable.forEach((item) => {
           item.total =
             (item.played * 1) + (item.won * 3) + (item.draw * 1) +
-            (item.mom * 3) + (item.ps * 1) + (item.late * -1) + (item.doOut * -1);
+            (item.mom * 3) + (item.ps * 2) + (item.late * -1) + (item.doOut * -1);
 
           item.ave = Math.round((item.total / item.played) * 10 ) / 10;
         });
