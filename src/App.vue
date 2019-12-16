@@ -70,24 +70,8 @@ body {
   margin-top: 10px;
 }
 
-body {
-  margin: 0;
-  font-family: Helvetica, sans-serif;
-  background-color: #f4f4f4;
-}
-
 a {
   color: #000;
-}
-
-/* header */
-
-.header {
-  background-color: #fff;
-  box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
-  position: fixed;
-  width: 100%;
-  z-index: 3;
 }
 
 .menu {
