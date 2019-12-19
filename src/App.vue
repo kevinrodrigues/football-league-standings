@@ -1,6 +1,17 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div class="github-cta">
+      <a
+        class="github-button"
+        href="https://github.com/kevinrodrigues/thursday-night-football-league"
+        data-icon="octicon-star"
+        aria-label="Star kevinrodrigues/thursday-night-football-league on GitHub">
+        Star
+    </a>
+    </div>
+    <div
+      v-observe-visibility="visibilityChanged"
+      id="nav" >
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
       <ul class="menu">
@@ -17,36 +28,58 @@
                 day: 'thursday'
               }
             }">Thursday</router-link></li>
-        <li>
-          <a
-            class="github-button"
-            href="https://github.com/kevinrodrigues/thursday-night-football-league"
-            data-icon="octicon-star"
-            aria-label="Star kevinrodrigues/thursday-night-football-league on GitHub">
-            Star
-            </a>
-        </li>
+        <li><router-link to="/mom-votes/">Vote</router-link></li>
       </ul>
     </div>
-    <router-view/>
+    <router-view :key="$route.fullPath"/>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   mounted() {
     const github = document.createElement('script');
     github.setAttribute('src', 'https://buttons.github.io/buttons.js');
     document.head.appendChild(github);
   },
+
+  methods: {
+    ...mapActions(['setHeaderVisibility']),
+
+    visibilityChanged(isVisible) {
+      this.setHeaderVisibility(isVisible);
+    },
+  },
 };
 </script>
 
 <style>
+
 body {
   background: url("./assets/bg2.jpg") no-repeat center center fixed;
   background-size: cover;
+  margin: 0;
 }
+
+h1 {
+  color: #fff;
+  background-color: rgba(0,0,0,0.2);
+  margin: 0;
+  padding: 12px;
+  font-size: 16px;
+  transition: all 0.5s ease-out;
+}
+
+h1.stickyHeader {
+  position: sticky;
+  top: 0;
+  background-color: #000;
+  font-size: 12px;
+  box-shadow: 1px 1px 4px 4px #333;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
@@ -54,7 +87,7 @@ body {
 }
 
 #nav {
-  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 #nav a {
@@ -68,6 +101,17 @@ body {
 
 .btn {
   margin-top: 10px;
+  position: absolute;
+}
+
+.github-cta {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+}
+
+.github-cta a {
+  color: #fff;
 }
 
 a {
@@ -84,19 +128,15 @@ a {
 .menu li a {
   display: block;
   padding: 20px 20px;
-  border-right: 1px solid #f4f4f4;
   text-decoration: none;
+  text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
 }
-
-/* menu */
 
 .menu {
   clear: both;
   max-height: 0;
   transition: max-height .2s ease-out;
 }
-
-/* menu icon */
 
 .menu-icon {
   cursor: pointer;
@@ -108,7 +148,7 @@ a {
 }
 
 .menu-icon .navicon {
-  background: #333;
+  background: #fff;
   display: block;
   height: 2px;
   position: relative;
@@ -118,7 +158,7 @@ a {
 
 .menu-icon .navicon:before,
 .menu-icon .navicon:after {
-  background: #333;
+  background: #fff;
   content: '';
   display: block;
   height: 100%;
@@ -134,8 +174,6 @@ a {
 .menu-icon .navicon:after {
   top: -5px;
 }
-
-/* menu btn */
 
 .menu-btn {
   display: none;
@@ -162,8 +200,6 @@ a {
   top: 0;
 }
 
-/* 48em = 768px */
-
 @media (min-width: 48em) {
   .menu li {
     float: left;
@@ -178,6 +214,10 @@ a {
   .menu-icon {
     display: none;
   }
-}
 
+  .github-cta {
+    right: 10px;
+    left: auto;
+  }
+}
 </style>

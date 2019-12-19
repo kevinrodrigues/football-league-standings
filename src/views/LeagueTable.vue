@@ -1,6 +1,8 @@
 <template>
-  <div class="about">
-    <h1>{ currentLeagueDay } league table</h1>
+  <div>
+    <h1 :class="[{ 'stickyHeader': !headerIsVisible }]">
+        {{ getCurrentSelectedLeagueDay }} league table
+    </h1>
 
     <input type="checkbox" id="switch" />
     <label for="switch" @click="onToggleSwitcherState">
@@ -70,7 +72,7 @@ export default {
   }),
 
   computed: {
-    ...mapState(['leagueTable']),
+    ...mapState(['leagueTable', 'headerIsVisible']),
 
     ...mapGetters([
       'sortByAverage',
@@ -88,11 +90,16 @@ export default {
 
     getSwitchedStateHeading() {
       return this.toggleSwitcherActive ? 'Average' : 'Total';
+    },
+
+    getCurrentSelectedLeagueDay() {
+      const day = this.$route.params.day;
+      return `${day.charAt(0).toUpperCase() + day.slice(1)}'s`;
     }
   },
 
   mounted() {
-    this.getLeagueStandings();
+    this.getLeagueStandings(this.$route.params.day);
     this.getCalculatedStandings();
   },
 
@@ -114,7 +121,7 @@ export default {
 
     onToggleSwitcherState() {
       this.toggleSwitcherActive = !this.toggleSwitcherActive;
-    }
+    },
   }
 };
 </script>

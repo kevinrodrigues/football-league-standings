@@ -7,19 +7,28 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     leagueTable: null,
+    headerIsVisible: false,
   },
   actions: {
-    getLeagueStandings: ({ commit }) => {
-      const leagueStandingsResponse = leagueResults.getLeagueResults();
+    getLeagueStandings: ({ commit }, payload) => {
+      const leagueStandingsResponse = leagueResults.getLeagueResults(payload);
 
       if (leagueStandingsResponse) {
         commit('getLeagueStandings', leagueStandingsResponse);
       }
     },
+
+    setHeaderVisibility: ({ commit }, payload) => {
+      commit('setHeaderVisibility', payload);
+    },
   },
   mutations: {
     getLeagueStandings(state, payload) {
       state.leagueTable = payload;
+    },
+
+    setHeaderVisibility(state, payload) {
+      state.headerIsVisible = payload;
     },
   },
   getters: {
