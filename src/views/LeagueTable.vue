@@ -1,14 +1,21 @@
 <template>
   <div>
+    <div>
+      <a class="recent-results" href="#" @click="show">See most recent match details</a>
+    </div>
     <h1 :class="[{ 'stickyHeader': !headerIsVisible }]">
         {{ getCurrentSelectedLeagueDay }} league table
     </h1>
 
-    <input type="checkbox" id="switch" />
-    <label for="switch" @click="onToggleSwitcherState">
-      <span>Average</span>
-      <span>Total</span>
-    </label>
+    <div class="container">
+      <div class="l-col">
+        <input type="checkbox" id="switch" />
+        <label for="switch" @click="onToggleSwitcherState">
+          <span>Average</span>
+          <span>Total</span>
+        </label>
+      </div>
+    </div>
 
     <h3>{{ getSwitchedStateHeading }}</h3>
 
@@ -21,6 +28,7 @@
         <th>L</th>
         <th>PS</th>
         <th>DO</th>
+        <th v-if="isLoyalityEnabled">Loy</th>
         <th>Late</th>
         <th>MOM</th>
         <th>Total</th>
@@ -53,6 +61,7 @@
           <td>{{ item.lost }}</td>
           <td>{{ item.ps }}</td>
           <td>{{ item.doOut }}</td>
+          <td v-if="isLoyalityEnabled">1</td>
           <td>{{ item.late }}</td>
           <td>{{ item.mom }}</td>
           <td>{{ item.total }}</td>
@@ -60,13 +69,19 @@
       </tr>
     </table>
 
+    <match-details />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
+import MatchDetails from '@/components/ModalMatchDetails.vue';
 
 export default {
+  components: {
+    MatchDetails,
+  },
+
   data: () => ({
     toggleSwitcherActive: true,
   }),
@@ -79,13 +94,14 @@ export default {
       'sortByTotal',
     ]),
 
-    /* eslint-disable */
     sortedLeagueStandings() {
       if (this.leagueTable) {
         return this.toggleSwitcherActive
           ? this.sortByAverage
           : this.sortByTotal;
       }
+
+      return false;
     },
 
     getSwitchedStateHeading() {
@@ -93,9 +109,15 @@ export default {
     },
 
     getCurrentSelectedLeagueDay() {
-      const day = this.$route.params.day;
+      const { day } = this.$route.params;
       return `${day.charAt(0).toUpperCase() + day.slice(1)}'s`;
-    }
+    },
+
+    isLoyalityEnabled() {
+      const { day } = this.$route.params;
+
+      return day === 'thursday';
+    },
   },
 
   mounted() {
@@ -109,11 +131,12 @@ export default {
     getCalculatedStandings() {
       if (this.leagueTable) {
         return this.leagueTable.forEach((item) => {
-          item.total =
-            (item.played * 1) + (item.won * 3) + (item.draw * 1) +
-            (item.mom * 3) + (item.ps * 2) + (item.late * -1) + (item.doOut * -1);
+          // eslint-disable-next-line
+          item.total = (item.played * 1) + (item.won * 3) + (item.draw * 1)
+             + (item.mom * 3) + (item.ps * 2) + (item.late * -1) + (item.doOut * -1);
 
-          item.ave = Math.round((item.total / item.played) * 10 ) / 10;
+          // eslint-disable-next-line
+          item.ave = Math.round((item.total / item.played) * 10) / 10;
         });
       }
       return false;
@@ -122,7 +145,15 @@ export default {
     onToggleSwitcherState() {
       this.toggleSwitcherActive = !this.toggleSwitcherActive;
     },
-  }
+
+    show() {
+      this.$modal.show('match-details');
+    },
+
+    hide() {
+      this.$modal.hide('match-details');
+    },
+  },
 };
 </script>
 
@@ -191,7 +222,7 @@ label {
   display: block;
   border-radius: 100px;
   position: relative;
-  border: 1px solid #fff;
+  border: 1px solid rgba(0,0,0,0.2);
 }
 
 label span {
@@ -225,5 +256,46 @@ input:checked + label:after {
 
 label:active:after {
   width: 130px;
+}
+
+.container {
+  overflow: hidden;
+  clear: both;
+}
+
+.recent-results {
+  display: block;
+  background-color: #42b983;
+  color: white;
+  padding: 4px 35px;
+  font-size: 12px;
+  transition: all 500ms;
+}
+
+.recent-results:before {
+  content: '';
+  background: url("../assets/ball.svg") no-repeat;
+  width: 15px;
+  height: 15px;
+  background-size: contain;
+  position: absolute;
+  right: 10px;
+}
+
+.recent-results:hover,
+.recent-results:focus  {
+  background-color: #14804f;
+  text-decoration: none;
+}
+
+@media (min-width: 48em) {
+  .l-col {
+    float: left;
+    margin-left: 20px;
+  }
+
+  .recent-results {
+    text-align: right;
+  }
 }
 </style>
