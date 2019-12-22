@@ -27,9 +27,9 @@
         <th>D</th>
         <th>L</th>
         <th>PS</th>
-        <th>DO</th>
+        <th class="hideBelowMid">DO</th>
         <th v-if="isLoyalityEnabled">Loy</th>
-        <th>Late</th>
+        <th class="hideBelowMid">Late</th>
         <th>MOM</th>
         <th>Total</th>
         <th>Ave</th>
@@ -60,16 +60,19 @@
           <td>{{ item.draw }}</td>
           <td>{{ item.lost }}</td>
           <td>{{ item.ps }}</td>
-          <td>{{ item.doOut }}</td>
+          <td class="hideBelowMid">{{ item.doOut }}</td>
           <td v-if="isLoyalityEnabled">{{ item.loy }}</td>
-          <td>{{ item.late }}</td>
+          <td class="hideBelowMid">{{ item.late }}</td>
           <td>{{ item.mom }}</td>
           <td>{{ item.total }}</td>
           <td>{{ item.ave }}</td>
       </tr>
     </table>
 
-    <match-details />
+    <match-details
+    :number="7"
+    :finalScore="getFinalScore"
+    :mom="getMom" />
   </div>
 </template>
 
@@ -96,6 +99,8 @@ export default {
     ...mapGetters([
       'sortByAverage',
       'sortByTotal',
+      'getMom',
+      'getFinalScore',
     ]),
 
     sortedLeagueStandings() {
@@ -256,6 +261,7 @@ label:after {
   background: #fff;
   border-radius: 90px;
   transition: 0.3s;
+  box-shadow: 1px 0 6px 0px #333;
 }
 
 input:checked + label:after {
@@ -295,6 +301,16 @@ label:active:after {
 .recent-results:focus  {
   background-color: #14804f;
   text-decoration: none;
+}
+
+.hideBelowMid {
+  display: none;
+}
+
+@media (min-width: 30em) {
+  .hideBelowMid {
+    display: table-cell;
+  }
 }
 
 @media (min-width: 48em) {

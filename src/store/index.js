@@ -13,7 +13,7 @@ export default new Vuex.Store({
   state: {
     leagueTable: null,
     headerIsVisible: false,
-    lastMatchDetails: null,
+    lastMatchDetails: [],
   },
   actions: {
     getLeagueStandings: ({ commit }, payload) => {
@@ -53,5 +53,25 @@ export default new Vuex.Store({
     sortByAverage: ({ leagueTable }) => leagueTable.sort((a, b) => b.ave - a.ave),
 
     sortByTotal: ({ leagueTable }) => leagueTable.sort((a, b) => b.total - a.total),
+
+    getMom: ({ lastMatchDetails }) => {
+      if (lastMatchDetails.length) {
+        const { mom } = lastMatchDetails.find(el => el.mom);
+
+        return mom.pop();
+      }
+
+      return false;
+    },
+
+    getFinalScore: ({ lastMatchDetails }) => {
+      if (lastMatchDetails.length) {
+        const { finalScore } = lastMatchDetails.find(el => el.finalScore);
+
+        return finalScore;
+      }
+
+      return false;
+    },
   },
 });

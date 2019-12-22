@@ -694,7 +694,7 @@ export default {
               'Kaka',
             ],
             mom: [
-              'Original Ronaldo',
+              'Inzaghi',
             ],
             fines: [
               'Ronaldiniho',
