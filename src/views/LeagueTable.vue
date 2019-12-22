@@ -61,7 +61,7 @@
           <td>{{ item.lost }}</td>
           <td>{{ item.ps }}</td>
           <td>{{ item.doOut }}</td>
-          <td v-if="isLoyalityEnabled">1</td>
+          <td v-if="isLoyalityEnabled">{{ item.loy }}</td>
           <td>{{ item.late }}</td>
           <td>{{ item.mom }}</td>
           <td>{{ item.total }}</td>
@@ -87,7 +87,11 @@ export default {
   }),
 
   computed: {
-    ...mapState(['leagueTable', 'headerIsVisible']),
+    ...mapState([
+      'leagueTable',
+      'headerIsVisible',
+      'lastMatchDetails',
+    ]),
 
     ...mapGetters([
       'sortByAverage',
@@ -126,14 +130,18 @@ export default {
   },
 
   methods: {
-    ...mapActions(['getLeagueStandings']),
+    ...mapActions([
+      'getLeagueStandings',
+      'getLastMatchDetails',
+    ]),
 
     getCalculatedStandings() {
       if (this.leagueTable) {
         return this.leagueTable.forEach((item) => {
           // eslint-disable-next-line
           item.total = (item.played * 1) + (item.won * 3) + (item.draw * 1)
-             + (item.mom * 3) + (item.ps * 2) + (item.late * -1) + (item.doOut * -1);
+             + (item.mom * 3) + (item.ps * 2) + (item.loy ? item.loy * 1 : 0)
+             + (item.late * -1) + (item.doOut * -1);
 
           // eslint-disable-next-line
           item.ave = Math.round((item.total / item.played) * 10) / 10;
@@ -147,6 +155,7 @@ export default {
     },
 
     show() {
+      this.getLastMatchDetails(this.$route.params.day);
       this.$modal.show('match-details');
     },
 

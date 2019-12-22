@@ -315,6 +315,7 @@ export default {
             lost: 2,
             ps: 1,
             doOut: 0,
+            loy: 1,
             late: 0,
             mom: 3,
             total: 0,
@@ -328,6 +329,7 @@ export default {
             lost: 2,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 1,
             mom: 2,
             total: 0,
@@ -341,6 +343,7 @@ export default {
             lost: 3,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -354,6 +357,7 @@ export default {
             lost: 4,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 1,
             total: 0,
@@ -367,6 +371,7 @@ export default {
             lost: 3,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 1,
             total: 0,
@@ -380,6 +385,7 @@ export default {
             lost: 3,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 2,
             mom: 0,
             total: 0,
@@ -393,6 +399,7 @@ export default {
             lost: 4,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -406,6 +413,7 @@ export default {
             lost: 4,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -419,6 +427,7 @@ export default {
             lost: 3,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -432,6 +441,7 @@ export default {
             lost: 3,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 1,
             mom: 0,
             total: 0,
@@ -445,6 +455,7 @@ export default {
             lost: 3,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -458,6 +469,7 @@ export default {
             lost: 3,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -471,6 +483,7 @@ export default {
             lost: 2,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -484,6 +497,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 1,
             total: 0,
@@ -497,6 +511,7 @@ export default {
             lost: 4,
             ps: 0,
             doOut: 1,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -510,6 +525,7 @@ export default {
             lost: 2,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -523,6 +539,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -536,6 +553,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -549,6 +567,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -562,6 +581,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -575,6 +595,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -588,6 +609,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
@@ -601,10 +623,85 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
+            loy: 0,
             late: 0,
             mom: 0,
             total: 0,
             ave: 0,
+          }];
+
+      default:
+        break;
+    }
+
+    return false;
+  },
+
+  getLastMatchDetails(day) {
+    switch (day) {
+      case 'tuesday':
+
+        return [
+          {
+            blacks: [
+              'Kevin R',
+              'CR7',
+              'Messi',
+              'The original Ronaldo',
+              'Ronaldiniho',
+              'Inzaghi',
+              'Kaka',
+            ],
+            reds: [
+              'Kevin',
+              'CR7',
+              'Messi',
+              'The original Ronaldo',
+              'Ronaldiniho',
+              'Inzaghi',
+              'Kaka',
+            ],
+            mom: [
+              'Original Ronaldo',
+            ],
+            fines: [
+              'Kevin',
+              'Inzaghi',
+            ],
+            finalScore: '3 - 0 to Blacks',
+            matchNumber: 7,
+          }];
+
+      case 'thursday':
+        return [
+          {
+            blacks: [
+              'Kevin',
+              'CR7',
+              'Messi',
+              'The original Ronaldo',
+              'Ronaldiniho',
+              'Inzaghi',
+              'Kaka',
+            ],
+            whites: [
+              'Kevin',
+              'CR7',
+              'Messi',
+              'The original Ronaldo',
+              'Ronaldiniho',
+              'Inzaghi',
+              'Kaka',
+            ],
+            mom: [
+              'Original Ronaldo',
+            ],
+            fines: [
+              'Ronaldiniho',
+              'Messi',
+            ],
+            finalScore: '3 - 0 to Reds',
+            matchNumber: 7,
           }];
 
       default:
