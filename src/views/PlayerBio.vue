@@ -11,11 +11,19 @@
         </h1>
 
         <h2>
+          Played: <span>{{ won }}</span>
+        </h2>
+
+        <h2>
           Won: <span>{{ won }}</span>
         </h2>
 
         <h2>
           Lost: <span>{{ lost }}</span>
+        </h2>
+
+        <h2>
+          Drawn: <span>{{ lost }}</span>
         </h2>
 
         <h2>
@@ -45,8 +53,10 @@
 export default {
   props: {
     player: String,
+    played: Number,
     won: Number,
     lost: Number,
+    drawn: Number,
     mom: Number,
     total: Number,
     ave: Number,
@@ -65,12 +75,8 @@ export default {
     top: 100%;
     z-index: 2;
     display: block;
-    -webkit-border-radius: 50%;
     border-radius: 50%;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    -webkit-animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19)
-    forwards, borderRadius 0.2s 2.3s linear forwards;
     animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19)
     forwards, borderRadius 0.2s 2.3s linear forwards;
   }

@@ -643,7 +643,8 @@ export default {
 
         return [
           {
-            blacks: [
+            teamOne: [
+              'BLACKS ⚫',
               'Kevin R',
               'CR7',
               'Messi',
@@ -652,7 +653,8 @@ export default {
               'Inzaghi',
               'Kaka',
             ],
-            reds: [
+            teamTwo: [
+              'REDS 🔴',
               'Kevin',
               'CR7',
               'Messi',
@@ -664,10 +666,7 @@ export default {
             mom: [
               'Original Ronaldo',
             ],
-            fines: [
-              'Kevin',
-              'Inzaghi',
-            ],
+            fines: [],
             finalScore: '3 - 0 to Blacks',
             matchNumber: 7,
           }];
@@ -675,23 +674,25 @@ export default {
       case 'thursday':
         return [
           {
-            blacks: [
+            teamOne: [
+              'BLACKS ⚫',
               'Kevin',
-              'CR7',
-              'Messi',
-              'The original Ronaldo',
-              'Ronaldiniho',
-              'Inzaghi',
-              'Kaka',
+              'Smithy',
+              'Gracie',
+              'Mike',
+              'Muz',
+              'Turner',
+              'Rob',
             ],
-            whites: [
+            teamTwo: [
+              'WHITES ⚪',
               'Kevin',
-              'CR7',
-              'Messi',
-              'The original Ronaldo',
-              'Ronaldiniho',
-              'Inzaghi',
-              'Kaka',
+              'Smithy',
+              'Gracie',
+              'Mike',
+              'Muz',
+              'Turner',
+              'Rob',
             ],
             mom: [
               'Inzaghi',

@@ -29,16 +29,22 @@
               }
             }">Thursday</router-link></li>
         <li><router-link to="/mom-votes/">Vote</router-link></li>
+        <li><button type="button" @click="showModal">League settings 📈</button></li>
       </ul>
     </div>
     <router-view :key="$route.fullPath"/>
+    <modal-default-to-match-day />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import ModalDefaultToMatchDay from '@/components/ModalDefaultToMatchDay.vue';
 
 export default {
+  components: {
+    ModalDefaultToMatchDay,
+  },
   mounted() {
     const github = document.createElement('script');
     github.setAttribute('src', 'https://buttons.github.io/buttons.js');
@@ -50,6 +56,10 @@ export default {
 
     visibilityChanged(isVisible) {
       this.setHeaderVisibility(isVisible);
+    },
+
+    showModal() {
+      this.$modal.show('default-to-match-day');
     },
   },
 };
@@ -127,11 +137,23 @@ a {
   overflow: hidden;
 }
 
-.menu li a {
+.menu li a,
+.menu li button {
   display: block;
   padding: 20px 20px;
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  color: #fff;
   text-shadow: 1px 1px 1px rgba(0,0,0, 0.5);
+}
+
+.menu li button {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4em;
 }
 
 .menu {
@@ -182,7 +204,7 @@ a {
 }
 
 .menu-btn:checked ~ .menu {
-  max-height: 240px;
+  max-height: 320px;
 }
 
 .menu-btn:checked ~ .menu-icon .navicon {
@@ -202,7 +224,25 @@ a {
   top: 0;
 }
 
+@media (max-width: 48em) {
+  #nav a:hover, #nav button:hover,
+  #nav a:focus, #nav button:focus {
+    background-color: #42b983;
+    cursor: pointer;
+  }
+
+  #nav a.router-link-exact-active:hover,
+  #nav a.router-link-exact-active:focus {
+    color: #fff;
+  }
+}
+
 @media (min-width: 48em) {
+  .l-col {
+    float: left;
+    margin-left: 20px;
+  }
+
   .menu li {
     float: left;
   }

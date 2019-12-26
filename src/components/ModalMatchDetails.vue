@@ -1,12 +1,26 @@
 <template>
   <div>
-    <modal name="match-details" :adaptive="true">
+    <modal name="match-details" height="auto" :adaptive="true" :scrollable="true">
       <div class="last-match-details">
         <div class="match-details-inner">
-          <h2>Match: <span>{{ number }}</span></h2>
-          <h3>Team Sheet: <span>{ @todo Getter > teamsheet }</span></h3>
-          <h3>MoM: <span>{{ mom }}</span></h3>
-          <h3>Final score: <span>{{ finalScore }}</span></h3>
+            <div>
+                <h2>📈 Match: <span>{{ number }}</span></h2>
+                <h3>📋 Team Sheets:</h3>
+                <ol v-for="teams in teamSheets" :key="teams.id">
+                    <li v-for="player in teams" :key="player.id">
+                        {{ player }}
+                    </li>
+                </ol>
+            </div>
+            <div class="score">
+                <h3>🏆 MoM: <span>{{ mom }}</span></h3>
+                <h3>⚽ Final score: <span>{{ finalScore }}</span></h3>
+                <h3>💰 Late fines: <span>{{ fines }}</span></h3>
+            </div>
+
+            <button @click="$modal.hide('match-details')">
+                Close
+            </button>
         </div>
       </div>
     </modal>
@@ -19,6 +33,8 @@ export default {
     number: Number,
     mom: [String, Boolean],
     finalScore: [String, Boolean],
+    teamSheets: [String, Array, Boolean],
+    fines: [String, Array, Boolean],
   },
 };
 </script>
@@ -41,9 +57,32 @@ export default {
     color: #5cf3af;
 }
 
+.last-match-details ol {
+    padding-left: 20px;
+    float: left;
+    width: 40%;
+}
+
+.last-match-details ol:last-child {
+    clear: right;
+}
+
+.last-match-details ol li {
+    list-style: none;
+}
+
+.last-match-details ol li:not(:first-child) {
+    color: #5cf3af;
+}
+
 .match-details-inner {
   padding: 25px;
   background-color: rgba(0,0,0,0.6);
   height: 100%;
+  overflow: hidden;
+}
+
+.match-details-inner .score {
+    clear: both;
 }
 </style>

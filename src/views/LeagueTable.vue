@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <a class="recent-results" href="#" @click="show">See most recent match details</a>
+      <button class="recent-results" @click="showRecentGame">See most recent match details</button>
     </div>
     <h1 :class="[{ 'stickyHeader': !headerIsVisible }]">
         {{ getCurrentSelectedLeagueDay }} league table
@@ -26,7 +26,7 @@
         <th>W</th>
         <th>D</th>
         <th>L</th>
-        <th>PS</th>
+        <th class="hideBelowMid">PS</th>
         <th class="hideBelowMid">DO</th>
         <th v-if="isLoyalityEnabled">Loy</th>
         <th class="hideBelowMid">Late</th>
@@ -59,7 +59,7 @@
           <td>{{ item.won }}</td>
           <td>{{ item.draw }}</td>
           <td>{{ item.lost }}</td>
-          <td>{{ item.ps }}</td>
+          <td class="hideBelowMid">{{ item.ps }}</td>
           <td class="hideBelowMid">{{ item.doOut }}</td>
           <td v-if="isLoyalityEnabled">{{ item.loy }}</td>
           <td class="hideBelowMid">{{ item.late }}</td>
@@ -72,13 +72,16 @@
     <match-details
     :number="7"
     :finalScore="getFinalScore"
-    :mom="getMom" />
+    :mom="getMom"
+    :teamSheets="getTeamSheets"
+    :fines="getPlayerFines" />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
 import MatchDetails from '@/components/ModalMatchDetails.vue';
+import { MATCH_DETAILS } from '../constants';
 
 export default {
   components: {
@@ -101,6 +104,8 @@ export default {
       'sortByTotal',
       'getMom',
       'getFinalScore',
+      'getTeamSheets',
+      'getPlayerFines',
     ]),
 
     sortedLeagueStandings() {
@@ -159,13 +164,20 @@ export default {
       this.toggleSwitcherActive = !this.toggleSwitcherActive;
     },
 
-    show() {
+    showRecentGame() {
       this.getLastMatchDetails(this.$route.params.day);
-      this.$modal.show('match-details');
+      this.$modal.show(MATCH_DETAILS, {
+        title: 'Alert',
+        buttons: [
+          {
+            title: 'Tuesday',
+          },
+        ],
+      });
     },
 
     hide() {
-      this.$modal.hide('match-details');
+      this.$modal.hide(MATCH_DETAILS);
     },
   },
 };
@@ -285,6 +297,8 @@ label:active:after {
   padding: 4px 35px;
   font-size: 12px;
   transition: all 500ms;
+  width: 100%;
+  border: none;
 }
 
 .recent-results:before {
@@ -301,6 +315,7 @@ label:active:after {
 .recent-results:focus  {
   background-color: #14804f;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .hideBelowMid {
@@ -314,11 +329,6 @@ label:active:after {
 }
 
 @media (min-width: 48em) {
-  .l-col {
-    float: left;
-    margin-left: 20px;
-  }
-
   .recent-results {
     text-align: right;
   }

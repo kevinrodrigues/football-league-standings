@@ -15,6 +15,7 @@ export default new Vuex.Store({
     headerIsVisible: false,
     lastMatchDetails: [],
   },
+
   actions: {
     getLeagueStandings: ({ commit }, payload) => {
       const leagueStandingsResponse = leagueResults.getLeagueResults(payload);
@@ -36,6 +37,7 @@ export default new Vuex.Store({
       commit(SET_HEADER_VISIBILITY, payload);
     },
   },
+
   mutations: {
     [SET_LEAGUE_STANDINGS](state, payload) {
       state.leagueTable = payload;
@@ -49,6 +51,7 @@ export default new Vuex.Store({
       state.lastMatchDetails = payload;
     },
   },
+
   getters: {
     sortByAverage: ({ leagueTable }) => leagueTable.sort((a, b) => b.ave - a.ave),
 
@@ -56,7 +59,7 @@ export default new Vuex.Store({
 
     getMom: ({ lastMatchDetails }) => {
       if (lastMatchDetails.length) {
-        const { mom } = lastMatchDetails.find(el => el.mom);
+        const { mom } = lastMatchDetails?.find(el => el.mom);
 
         return mom.pop();
       }
@@ -69,6 +72,29 @@ export default new Vuex.Store({
         const { finalScore } = lastMatchDetails.find(el => el.finalScore);
 
         return finalScore;
+      }
+
+      return false;
+    },
+
+    getTeamSheets: ({ lastMatchDetails }) => {
+      if (lastMatchDetails.length) {
+        const { teamOne, teamTwo } = lastMatchDetails.find(el => el);
+
+        return [
+          teamOne,
+          teamTwo,
+        ];
+      }
+
+      return false;
+    },
+
+    getPlayerFines: ({ lastMatchDetails }) => {
+      if (lastMatchDetails.length) {
+        const { fines } = lastMatchDetails.find(el => el);
+
+        return fines.length ? fines.join(', ') : 'No fines.';
       }
 
       return false;
