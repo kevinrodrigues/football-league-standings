@@ -1,7 +1,9 @@
 <template>
   <div>
     <div>
-      <button class="recent-results" @click="showRecentGame">See most recent match details</button>
+      <button class="recent-results" @click="showRecentGame">
+        {{ getCurrentSelectedLeagueDay }} match results
+      </button>
     </div>
     <h1 :class="[{ 'stickyHeader': !headerIsVisible }]">
         {{ getCurrentSelectedLeagueDay }} league table

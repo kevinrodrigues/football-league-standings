@@ -5388,6 +5388,10 @@ loglevel@^1.6.4:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.6.tgz#0ee6300cc058db6b3551fa1c4bf73b83bb771312"
 
+logrocket@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/logrocket/-/logrocket-1.0.5.tgz#9f4f63bcc1b23fc43d62b36dbfabc4217df6c98c"
+
 loose-envify@^1.0.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
