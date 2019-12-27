@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@sentry/browser": "5.10.2",
     "core-js": "^3.3.2",
     "logrocket": "^1.0.5",
     "vue": "^2.6.10",
