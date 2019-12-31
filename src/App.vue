@@ -1,49 +1,54 @@
 <template>
-  <div id="app">
-    <div class="github-cta">
-      <a
-        class="github-button"
-        href="https://github.com/kevinrodrigues/thursday-night-football-league"
-        data-icon="octicon-star"
-        aria-label="Star kevinrodrigues/thursday-night-football-league on GitHub">
-        Star
-    </a>
+  <div class="wrapper">
+    <div id="app">
+      <div class="github-cta">
+        <a
+          class="github-button"
+          href="https://github.com/kevinrodrigues/thursday-night-football-league"
+          data-icon="octicon-star"
+          aria-label="Star kevinrodrigues/thursday-night-football-league on GitHub">
+          Star
+      </a>
+      </div>
+      <div
+        v-observe-visibility="visibilityChanged"
+        id="nav" >
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link :to="{
+                name: 'league',
+                params: {
+                  day: 'tuesday'
+                }
+              }">Tuesday</router-link></li>
+          <li><router-link :to="{
+                name: 'league',
+                params: {
+                  day: 'thursday'
+                }
+              }">Thursday</router-link></li>
+          <li><router-link to="/mom-votes/">Vote</router-link></li>
+        </ul>
+      </div>
+      <router-view :key="$route.fullPath"/>
+      <modal-default-to-match-day />
+      <div class="push"></div>
+      <page-footer />
     </div>
-    <div
-      v-observe-visibility="visibilityChanged"
-      id="nav" >
-      <input class="menu-btn" type="checkbox" id="menu-btn" />
-      <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-      <ul class="menu">
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link :to="{
-              name: 'league',
-              params: {
-                day: 'tuesday'
-              }
-            }">Tuesday</router-link></li>
-        <li><router-link :to="{
-              name: 'league',
-              params: {
-                day: 'thursday'
-              }
-            }">Thursday</router-link></li>
-        <li><router-link to="/mom-votes/">Vote</router-link></li>
-        <li><button type="button" @click="showModal">League settings 📈</button></li>
-      </ul>
-    </div>
-    <router-view :key="$route.fullPath"/>
-    <modal-default-to-match-day />
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
 import ModalDefaultToMatchDay from '@/components/ModalDefaultToMatchDay.vue';
+import PageFooter from '@/components/PageFooter.vue';
 
 export default {
   components: {
     ModalDefaultToMatchDay,
+    PageFooter,
   },
   mounted() {
     const github = document.createElement('script');
@@ -73,6 +78,11 @@ body {
   margin: 0;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 h1 {
   color: #fff;
   background-color: rgba(0,0,0,0.2);
@@ -96,6 +106,7 @@ h1.stickyHeader {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
+  margin-bottom: 133px;
 }
 
 #nav {

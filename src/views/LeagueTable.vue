@@ -9,7 +9,7 @@
         {{ getCurrentSelectedLeagueDay }} league table
     </h1>
 
-    <div class="container">
+    <div class="container toggle-switch">
       <div class="l-col">
         <input type="checkbox" id="switch" />
         <label for="switch" @click="onToggleSwitcherState">
@@ -20,6 +20,25 @@
     </div>
 
     <h3>{{ getSwitchedStateHeading }}</h3>
+
+    <div class="filter-wrapper">
+      <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
+    </div>
+
+    <div v-if="isFilterOverlayOpen" class="search-overlay block">
+      <h3>Filter table by player</h3>
+      <button @click="onFilterPlayerClosed" class="search-overlay-close">X</button>
+      <div class="centered">
+        <div class="search-box">
+          <form class="search-form">
+              <input type="text" v-model="search"/>
+              <button class="search-player-button" type="button" @click="onFilterPlayerClosed">
+                <span>Apply</span>
+              </button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <table>
       <tr class="table-heading">
@@ -37,7 +56,7 @@
         <th>Ave</th>
       </tr>
 
-      <tr v-for="item in sortedLeagueStandings"
+      <tr v-for="item in filteredPlayers"
           :key="item.id"
           class="table-stats">
           <td>
@@ -92,6 +111,8 @@ export default {
 
   data: () => ({
     toggleSwitcherActive: true,
+    search: '',
+    isFilterOverlayOpen: false,
   }),
 
   computed: {
@@ -133,6 +154,15 @@ export default {
       const { day } = this.$route.params;
 
       return day === 'thursday';
+    },
+
+    filteredPlayers() {
+      if (this.sortedLeagueStandings.length) {
+        return this.sortedLeagueStandings
+          .filter(player => player.player.toLowerCase().indexOf(this.search.toLowerCase()) >= 0);
+      }
+
+      return false;
     },
   },
 
@@ -180,6 +210,14 @@ export default {
 
     hide() {
       this.$modal.hide(MATCH_DETAILS);
+    },
+
+    onFilterPlayerOpened() {
+      this.isFilterOverlayOpen = true;
+    },
+
+    onFilterPlayerClosed() {
+      this.isFilterOverlayOpen = false;
     },
   },
 };
@@ -236,13 +274,13 @@ export default {
   border: 1px solid #eee;
 }
 
-input[type=checkbox]{
+.toggle-switch input[type=checkbox]{
   height: 0;
   width: 0;
   visibility: hidden;
 }
 
-label {
+.toggle-switch label {
   cursor: pointer;
   width: 200px;
   height: 60px;
@@ -253,19 +291,19 @@ label {
   border: 1px solid rgba(0,0,0,0.2);
 }
 
-label span {
+.toggle-switch label span {
   position: absolute;
   top: 33%;
   right: 36px;
   z-index: 9;
 }
 
-label span:first-child {
+.toggle-switch label span:first-child {
   left: 24px;
   text-align: left;
 }
 
-label:after {
+.toggle-switch label:after {
   content: '';
   position: absolute;
   top: 5px;
@@ -278,12 +316,12 @@ label:after {
   box-shadow: 1px 0 6px 0px #333;
 }
 
-input:checked + label:after {
+.toggle-switch input:checked + label:after {
   left: calc(100% - 5px);
   transform: translateX(-100%);
 }
 
-label:active:after {
+.toggle-switch label:active:after {
   width: 130px;
 }
 
@@ -334,5 +372,116 @@ label:active:after {
   .recent-results {
     text-align: right;
   }
+}
+
+.search-overlay h3 {
+  color: #fff;
+  margin-top: 15%;
+}
+
+.search-overlay-close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 25px;
+}
+
+.block {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom:0 ;
+  left: 0;
+  overflow: auto;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.9);
+  border: #a0a0a0 solid 1px;
+  margin: 0;
+  z-index: 999;
+}
+
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 70%;
+  padding: 10px 15px;
+  color: #FFF;
+  border: none;
+  background: transparent;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+  margin: 0;
+}
+
+.search-form {
+  height: 4em;
+  border: 1px solid #999;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.search-text {
+  font-size: 14px;
+  color: #ddd;
+  border-width: 0;
+  background: transparent;
+}
+
+.search-box input[type="text"] {
+  width: 90%;
+  padding: 20px;
+  color: #333;
+  outline: none;
+  font-size: 1.4em;
+  border: none;
+}
+
+.search-player-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 4.7em;
+  width: 100px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  line-height: 42px;
+  border-width: 0;
+  background-color: #4d90fe;
+  border-radius: 0 2px 2px 0;
+  cursor: pointer;
+}
+
+.filter-search:hover,
+.filter-search:focus {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.filter-wrapper {
+  position: fixed;
+  right: 0;
+  background-color:#42b983;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0, 0.5);
+}
+
+.filter-search {
+  background: transparent url("../assets/filter.svg") no-repeat;
+  text-indent: -999em;
+  width: 30px;
+  height: 30px;
+  border: none;
+  transition: all 200ms;
+  float: right;
 }
 </style>

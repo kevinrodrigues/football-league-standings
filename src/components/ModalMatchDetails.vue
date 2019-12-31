@@ -18,7 +18,7 @@
                 <h3>💰 Late fines: <span>{{ fines }}</span></h3>
             </div>
 
-            <button @click="$modal.hide('match-details')">
+            <button @click="$modal.hide('match-details')" class="modal-close">
                 Close
             </button>
         </div>
@@ -83,6 +83,23 @@ export default {
 }
 
 .match-details-inner .score {
-    clear: both;
+  clear: both;
+}
+
+.modal-close {
+  padding: 10px;
+  background-color: #42b983;
+  border: none;
+  width: 100%;
+  margin-top: 20px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  cursor: pointer;
+  background-color: #5cf3af;
 }
 </style>
