@@ -32,7 +32,14 @@
         <div class="search-box">
           <form class="search-form">
               <input type="text" v-model="search"/>
-              <button class="search-player-button" type="button" @click="onFilterPlayerClosed">
+              <button
+                v-if="isPlayerSearchPopulated"
+                class="clear-player-search"
+                type="button"
+                @click="clearPlayerSearch">
+                <span>x</span>
+              </button>
+              <button class="search-player-button" type="button" @click="onFilterApplied">
                 <span>Apply</span>
               </button>
           </form>
@@ -164,6 +171,10 @@ export default {
 
       return false;
     },
+
+    isPlayerSearchPopulated() {
+      return this.search.length > 0;
+    },
   },
 
   mounted() {
@@ -216,8 +227,16 @@ export default {
       this.isFilterOverlayOpen = true;
     },
 
+    onFilterApplied() {
+      this.isFilterOverlayOpen = false;
+    },
+
     onFilterPlayerClosed() {
       this.isFilterOverlayOpen = false;
+    },
+
+    clearPlayerSearch() {
+      this.search = '';
     },
   },
 };
@@ -397,7 +416,7 @@ export default {
   left: 0;
   overflow: auto;
   text-align: center;
-  background: rgba(0, 0, 0, 0.9);
+  background: #000;
   border: #a0a0a0 solid 1px;
   margin: 0;
   z-index: 999;
@@ -437,12 +456,13 @@ export default {
 }
 
 .search-box input[type="text"] {
-  width: 90%;
+  width: 51%;
   padding: 20px;
   color: #333;
   outline: none;
   font-size: 1.4em;
   border: none;
+  float: left;
 }
 
 .search-player-button {
@@ -483,5 +503,15 @@ export default {
   border: none;
   transition: all 200ms;
   float: right;
+}
+
+.clear-player-search {
+  position: absolute;
+  top: 20px;
+  right: 106px;
+  font-size: 18px;
+  color: #777;
+  background-color: transparent;
+  border: none;
 }
 </style>

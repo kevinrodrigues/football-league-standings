@@ -2,14 +2,24 @@
   <div class="footer">
       <h4>Quick Menu</h4>
     <ul>
-        <li>Home |</li>
-        <li>Tuesday |</li>
-        <li>Thursday |</li>
-        <li>Vote</li>
+        <li><router-link to="/">Home</router-link> |</li>
+        <li><router-link :to="{
+                name: 'league',
+                params: {
+                  day: 'tuesday'
+                }
+              }">Tuesday</router-link> |</li>
+        <li><router-link :to="{
+                name: 'league',
+                params: {
+                  day: 'thursday'
+                }
+              }">Thursday</router-link> |</li>
+        <li><router-link to="/mom-votes/">Vote</router-link></li>
     </ul>
-    <a href="https://github.com/kevinrodrigues" target="_blank">
-        &copy; Copyright {{ getCurrentYear }} Kevin Rodrigues - All Rights Reserved.
-    </a>
+        <p class="copyright">&copy; Copyright {{ getCurrentYear }}
+            <a href="https://github.com/kevinrodrigues" target="_blank">Kevin Rodrigues</a>
+            - All Rights Reserved.</p>
   </div>
 </template>
 
@@ -34,6 +44,7 @@ export default {
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .footer a {
@@ -59,5 +70,29 @@ export default {
     display: inline-block;
     margin-right: 7px;
     font-size: 11px;
+}
+
+.footer li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer li a:hover,
+.footer li a:focus {
+    text-decoration: underline;
+    color:#777;
+}
+
+.footer .copyright {
+    font-size: 11px;
+}
+
+.footer .copyright a {
+    color: #fff;
+}
+
+.footer .copyright a:hover,
+.footer .copyright a:focus {
+    color: #777;
 }
 </style>
