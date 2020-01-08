@@ -3,7 +3,7 @@
     <aside class="profile-card">
       <header>
         <a href="#">
-          <img src="http://lorempixel.com/150/150/people/" class="hoverZoomLink">
+          <img src="http://lorempixel.com/150/150/sports/" class="hoverZoomLink">
         </a>
 
         <h1>

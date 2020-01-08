@@ -106,7 +106,7 @@ h1.stickyHeader {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  margin-bottom: 133px;
+  margin-bottom: 200px;
 }
 
 #nav {
