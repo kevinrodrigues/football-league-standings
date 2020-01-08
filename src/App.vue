@@ -89,7 +89,6 @@ h1 {
   margin: 0;
   padding: 12px;
   font-size: 16px;
-  transition: all 0.5s ease-out;
   position: relative;
   z-index: 999;
 }
