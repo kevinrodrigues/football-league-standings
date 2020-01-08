@@ -3,26 +3,46 @@
     <aside class="profile-card">
       <header>
         <a href="#">
-          <img src="http://lorempixel.com/150/150/people/" class="hoverZoomLink">
+          <img src="http://lorempixel.com/150/150/sports/" class="hoverZoomLink">
         </a>
 
         <h1>
-          Player: {{ player }}
+          {{ player }}
         </h1>
 
         <h2>
-          Won: {{ won }}
+          Played: <span>{{ won }}</span>
         </h2>
 
         <h2>
-          Lost: {{ lost }}
+          Won: <span>{{ won }}</span>
+        </h2>
+
+        <h2>
+          Lost: <span>{{ lost }}</span>
+        </h2>
+
+        <h2>
+          Drawn: <span>{{ lost }}</span>
+        </h2>
+
+        <h2>
+          MoM: <span>{{ mom }}</span>
+        </h2>
+
+        <h2>
+          Total: <span>{{ total }}</span>
+        </h2>
+
+        <h2>
+          Ave: <span>{{ ave }}</span>
         </h2>
 
       </header>
 
       <div class="profile-bio">
         <p>
-          Player bio
+          Player bio - info
         </p>
       </div>
     </aside>
@@ -33,8 +53,13 @@
 export default {
   props: {
     player: String,
-    won: String,
-    lost: String,
+    played: Number,
+    won: Number,
+    lost: Number,
+    drawn: Number,
+    mom: Number,
+    total: Number,
+    ave: Number,
   },
 };
 </script>
@@ -50,12 +75,8 @@ export default {
     top: 100%;
     z-index: 2;
     display: block;
-    -webkit-border-radius: 50%;
     border-radius: 50%;
-    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    -webkit-animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19)
-    forwards, borderRadius 0.2s 2.3s linear forwards;
     animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19)
     forwards, borderRadius 0.2s 2.3s linear forwards;
   }
@@ -103,6 +124,19 @@ export default {
     forwards, moveDown 1s 0.8s cubic-bezier(0.6, -0.28, 0.735, 0.045)
     forwards, moveUp 1s 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)
     forwards, materia 0.5s 2.7s cubic-bezier(0.86, 0, 0.07, 1) forwards;
+  }
+
+  .profile-card h2 {
+    text-align: left;
+    padding: 5px;
+  }
+
+  .profile-card span {
+    float: right;
+  }
+
+  .profile-card h2:nth-child(odd) {
+    background-color: #f2f2f2;
   }
 
   .profile-card header {

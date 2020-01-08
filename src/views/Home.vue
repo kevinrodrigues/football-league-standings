@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <home-view msg="Thursday night football"/>
+    <home-view msg="Previous league standings"/>
   </div>
 </template>
 
