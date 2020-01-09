@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-      <h4>Quick Menu</h4>
+    <h4>Quick Menu</h4>
     <ul>
         <li><router-link to="/">Home</router-link> |</li>
         <li><router-link :to="{
@@ -20,6 +20,8 @@
         <p class="copyright">&copy; Copyright {{ getCurrentYear }}
             <a href="https://github.com/kevinrodrigues" target="_blank">Kevin Rodrigues</a>
             - All Rights Reserved.</p>
+
+    <a href="https://www.buymeacoffee.com/8BjFsLO" target="_blank" class="bmc"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee"></a>
   </div>
 </template>
 
@@ -94,5 +96,17 @@ export default {
 .footer .copyright a:hover,
 .footer .copyright a:focus {
     color: #777;
+}
+
+.footer .bmc {
+  overflow: hidden;
+  width: 24px;
+  height: auto;
+  display: inline-flex;
+  border-radius: 5px;
+}
+
+.footer .bmc img {
+  width: 110px;
 }
 </style>

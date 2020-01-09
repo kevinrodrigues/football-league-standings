@@ -94,7 +94,17 @@ export default new Vuex.Store({
       if (lastMatchDetails.length) {
         const { fines } = lastMatchDetails.find(el => el);
 
-        return fines.length ? fines.join(', ') : 'No fines.';
+        return fines.length ? fines.join(', ') : 'No fines. ';
+      }
+
+      return false;
+    },
+
+    getMatchNumber: ({ lastMatchDetails }) => {
+      if (lastMatchDetails.length) {
+        const { matchNumber } = lastMatchDetails.find(el => el);
+
+        return matchNumber;
       }
 
       return false;
