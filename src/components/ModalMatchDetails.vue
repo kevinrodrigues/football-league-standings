@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 .last-match-details {
-  background: url("../assets/bg.jpg") no-repeat;
+  background: #42b983 url("../assets/bg.jpg") no-repeat;
   background-size: cover;
   height: 100%;
   color: #fff;

@@ -2,9 +2,10 @@
   <div>
     <div>
       <button class="recent-results" @click="showRecentGame">
-        {{ getCurrentSelectedLeagueDay }} match results
+        Check {{ getCurrentSelectedLeagueDay }} match results
       </button>
     </div>
+
     <h1 :class="[{ 'stickyHeader': !headerIsVisible }]">
         {{ getCurrentSelectedLeagueDay }} league table
     </h1>
@@ -56,10 +57,11 @@
         <th>L</th>
         <th class="hideBelowMid">PS</th>
         <th class="hideBelowMid">DO</th>
-        <th v-if="isLoyalityEnabled">Loy</th>
+        <th v-if="isLoyalityEnabled" class="hideBelowMid">Loy</th>
         <th class="hideBelowMid">Late</th>
-        <th>MOM</th>
-        <th>Total</th>
+        <th v-if="isMomCountEnabled">Vs</th>
+        <th>MoM</th>
+        <th>Tot</th>
         <th>Ave</th>
       </tr>
 
@@ -75,6 +77,7 @@
                 won: item.won,
                 lost: item.lost,
                 mom: item.mom,
+                votes: item.votes,
                 total: item.total,
                 ave: item.ave
               },
@@ -89,8 +92,9 @@
           <td>{{ item.lost }}</td>
           <td class="hideBelowMid">{{ item.ps }}</td>
           <td class="hideBelowMid">{{ item.doOut }}</td>
-          <td v-if="isLoyalityEnabled">{{ item.loy }}</td>
+          <td v-if="isLoyalityEnabled" class="hideBelowMid">{{ item.loy }}</td>
           <td class="hideBelowMid">{{ item.late }}</td>
+          <td v-if="isMomCountEnabled">{{ item.votes }}</td>
           <td>{{ item.mom }}</td>
           <td>{{ item.total }}</td>
           <td>{{ item.ave }}</td>
@@ -98,7 +102,7 @@
     </table>
 
     <match-details
-    :number="7"
+    :number="getMatchNumber"
     :finalScore="getFinalScore"
     :mom="getMom"
     :teamSheets="getTeamSheets"
@@ -136,6 +140,7 @@ export default {
       'getFinalScore',
       'getTeamSheets',
       'getPlayerFines',
+      'getMatchNumber',
     ]),
 
     sortedLeagueStandings() {
@@ -161,6 +166,12 @@ export default {
       const { day } = this.$route.params;
 
       return day === 'thursday';
+    },
+
+    isMomCountEnabled() {
+      const { day } = this.$route.params;
+
+      return day === 'tuesday';
     },
 
     filteredPlayers() {
