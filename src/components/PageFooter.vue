@@ -108,6 +108,6 @@ export default {
 
 .footer .bmc img {
   width: 110px;
-  height: auto;
+  height: 25px;
 }
 </style>

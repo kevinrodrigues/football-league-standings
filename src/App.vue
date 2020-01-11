@@ -90,7 +90,6 @@ h1 {
   padding: 12px;
   font-size: 16px;
   position: relative;
-  z-index: 999;
 }
 
 h1.stickyHeader {
@@ -99,6 +98,7 @@ h1.stickyHeader {
   background-color: #000;
   font-size: 12px;
   box-shadow: 1px 1px 4px 4px #333;
+  z-index: 999;
 }
 
 #app {
