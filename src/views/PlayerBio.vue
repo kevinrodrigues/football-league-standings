@@ -65,22 +65,6 @@ export default {
 </script>
 
 <style scoped>
-  body:before {
-    content: "";
-    height: 0px;
-    padding: 0px;
-    border: 130em solid #313440;
-    position: absolute;
-    left: 50%;
-    top: 100%;
-    z-index: 2;
-    display: block;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19)
-    forwards, borderRadius 0.2s 2.3s linear forwards;
-  }
-
   h1,
   h2 {
     font-weight: 500;
@@ -123,11 +107,12 @@ export default {
   }
 
   .profile-card header {
-    width: 179px;
-    height: 280px;
-    padding: 40px 20px 30px 20px;
-    display: inline-block;
-    float: left;
+    width: auto;
+    height: auto;
+    padding: 30px 20px;
+    display: block;
+    float: none;
+    border-right: none;
     border-right: 2px dashed #EEEEEE;
     background: #FFFFFF;
     color: #000000;
@@ -182,11 +167,11 @@ export default {
   }
 
   .profile-card .profile-bio {
-    width: 175px;
-    height: 180px;
-    display: inline-block;
-    float: right;
-    padding: 50px 20px 30px 20px;
+    width: auto;
+    height: auto;
+    padding: 15px 20px 30px 20px;
+    display: block;
+    float: none;
     background: #FFFFFF;
     color: #333333;
     text-align: center;
@@ -203,11 +188,6 @@ export default {
 
   @media screen and (min-height: 480px) {
     .profile-card header {
-      width: auto;
-      height: auto;
-      padding: 30px 20px;
-      display: block;
-      float: none;
       border-right: none;
     }
     .profile-card .profile-bio {
