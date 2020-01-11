@@ -74,6 +74,7 @@
               name: 'player-bio',
               params: {
                 player: item.player,
+                played: item.played,
                 won: item.won,
                 lost: item.lost,
                 mom: item.mom,
