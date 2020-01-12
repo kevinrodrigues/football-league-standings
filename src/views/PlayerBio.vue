@@ -23,7 +23,7 @@
         </h2>
 
         <h2>
-          Drawn: <span>{{ lost }}</span>
+          Drawn: <span>{{ draw }}</span>
         </h2>
 
         <h2>
@@ -56,7 +56,7 @@ export default {
     played: Number,
     won: Number,
     lost: Number,
-    drawn: Number,
+    draw: Number,
     mom: Number,
     total: Number,
     ave: Number,
