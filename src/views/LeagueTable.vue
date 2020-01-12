@@ -77,6 +77,7 @@
                 played: item.played,
                 won: item.won,
                 lost: item.lost,
+                draw: item.draw,
                 mom: item.mom,
                 votes: item.votes,
                 total: item.total,

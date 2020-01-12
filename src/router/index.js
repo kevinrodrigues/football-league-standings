@@ -20,7 +20,7 @@ const routes = [
     props: true,
   },
   {
-    path: '/player-bio/:player/:won/:lost/:mom/:total/:ave',
+    path: '/player-bio/:player/:played/:won/:lost/:draw/:mom/:total/:ave',
     name: 'player-bio',
     // route level code-splitting
     // this generates a separate chunk (PlayerBio.[hash].js) for this route

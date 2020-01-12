@@ -30,7 +30,7 @@
 <script>
 export default {
   props: {
-    number: Number,
+    number: [Number, Boolean],
     mom: [String, Boolean],
     finalScore: [String, Boolean],
     teamSheets: [String, Array, Boolean],
