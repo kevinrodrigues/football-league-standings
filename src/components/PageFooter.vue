@@ -21,7 +21,7 @@
             <a href="https://github.com/kevinrodrigues" target="_blank">Kevin Rodrigues</a>
             - All Rights Reserved.</p>
 
-    <a href="https://www.buymeacoffee.com/8BjFsLO" target="_blank" class="bmc"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee"></a>
+    <a href="https://www.buymeacoffee.com/8BjFsLO" target="_blank" class="bmc"><img src="../assets/coffee.svg" alt="Buy Me A Coffee"></a>
   </div>
 </template>
 
@@ -99,15 +99,9 @@ export default {
 }
 
 .footer .bmc {
-  overflow: hidden;
-  width: 24px;
-  height: auto;
-  display: inline-flex;
-  border-radius: 5px;
+  display: block;
+  width: 30px;
+  float: right;
 }
 
-.footer .bmc img {
-  width: 110px;
-  height: 25px;
-}
 </style>
