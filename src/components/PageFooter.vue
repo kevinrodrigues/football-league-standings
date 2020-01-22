@@ -15,13 +15,11 @@
                   day: 'thursday'
                 }
               }">Thursday</router-link> |</li>
-        <li><router-link to="/mom-votes/">Vote</router-link></li>
+        <li><a href="https://www.buymeacoffee.com/8BjFsLO" target="_blank" class="bmc">Buy me a coffee</a></li>
     </ul>
         <p class="copyright">&copy; Copyright {{ getCurrentYear }}
             <a href="https://github.com/kevinrodrigues" target="_blank">Kevin Rodrigues</a>
             - All Rights Reserved.</p>
-
-    <a href="https://www.buymeacoffee.com/8BjFsLO" target="_blank" class="bmc"><img src="../assets/coffee.svg" alt="Buy Me A Coffee"></a>
   </div>
 </template>
 
@@ -96,12 +94,6 @@ export default {
 .footer .copyright a:hover,
 .footer .copyright a:focus {
     color: #777;
-}
-
-.footer .bmc {
-  display: block;
-  width: 30px;
-  float: right;
 }
 
 </style>

@@ -1,5 +1,7 @@
 <template>
   <div class="player-bio">
+    <!--<button @click="$router.go(-1)">Back</button>-->
+
     <aside class="profile-card">
       <header>
         <a href="#">
