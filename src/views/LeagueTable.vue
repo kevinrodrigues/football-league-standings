@@ -430,7 +430,6 @@ export default {
   overflow: auto;
   text-align: center;
   background: #000;
-  border: #a0a0a0 solid 1px;
   margin: 0;
   z-index: 999;
 }

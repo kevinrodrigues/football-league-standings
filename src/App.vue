@@ -29,7 +29,6 @@
                   day: 'thursday'
                 }
               }">Thursday</router-link></li>
-          <li><router-link to="/mom-votes/">Vote</router-link></li>
         </ul>
       </div>
       <router-view :key="$route.fullPath"/>
