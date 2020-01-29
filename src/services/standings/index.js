@@ -123,7 +123,7 @@ export default {
             won: 1,
             draw: 0,
             lost: 1,
-            ps: 0,
+            ps: 1,
             doOut: 0,
             late: 0,
             votes: 1,
