@@ -435,7 +435,7 @@ export default {
               'Sat',
             ],
             mom: [
-              'Millen',
+              'Millen 👏',
             ],
             fines: [],
             finalScore: '2 - 0 to Blacks',
