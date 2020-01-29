@@ -28,7 +28,7 @@ export default {
             ps: 0,
             doOut: 0,
             late: 0,
-            votes: 7,
+            votes: 9,
             mom: 1,
             total: 0,
             ave: 0,
