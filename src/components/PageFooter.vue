@@ -15,11 +15,9 @@
                   day: 'thursday'
                 }
               }">Thursday</router-link> |</li>
-        <li><a href="https://www.buymeacoffee.com/8BjFsLO" target="_blank" class="bmc">Buy me a coffee</a></li>
+        <li><a href="https://kevin-rodrigues.netlify.com/" target="_blank">Slinging code for cash</a></li>
     </ul>
-        <p class="copyright">&copy; Copyright {{ getCurrentYear }}
-            <a href="https://github.com/kevinrodrigues" target="_blank">Kevin Rodrigues</a>
-            - All Rights Reserved.</p>
+        <p class="copyright">&copy; Copyright {{ getCurrentYear }}</p>
   </div>
 </template>
 
