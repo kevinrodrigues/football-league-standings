@@ -15,7 +15,7 @@
                   day: 'thursday'
                 }
               }">Thursday</router-link> |</li>
-        <li><a href="https://kevin-rodrigues.netlify.com/" target="_blank">Slinging code for cash</a></li>
+        <li><a href="https://kevin-rodrigues.netlify.com/" target="_blank">Kevin Rodrigues</a></li>
     </ul>
         <p class="copyright">&copy; Copyright {{ getCurrentYear }}</p>
   </div>
