@@ -39,7 +39,6 @@ export default {
     margin-top: 20px;
     color: #fff;
     text-align: right;
-    position: fixed;
     bottom: 0;
     width: 100%;
     box-sizing: border-box;
