@@ -13,22 +13,22 @@
       <div
         v-observe-visibility="visibilityChanged"
         id="nav" >
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <input class="menu-btn" type="checkbox" id="menu-btn" v-model="isChecked" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
-          <li><router-link to="/">Home</router-link></li>
+          <li><router-link to="/" @click.native="onMenuItemClicked()">Home</router-link></li>
           <li><router-link :to="{
                 name: 'league',
                 params: {
                   day: 'tuesday'
                 }
-              }">Tuesday</router-link></li>
+              }" @click.native="onMenuItemClicked()">Tuesday</router-link></li>
           <li><router-link :to="{
                 name: 'league',
                 params: {
                   day: 'thursday'
                 }
-              }">Thursday</router-link></li>
+              }" @click.native="onMenuItemClicked()">Thursday</router-link></li>
         </ul>
       </div>
       <router-view :key="$route.fullPath"/>
@@ -55,6 +55,10 @@ export default {
     document.head.appendChild(github);
   },
 
+  data: () => ({
+    isChecked: false,
+  }),
+
   methods: {
     ...mapActions(['setHeaderVisibility']),
 
@@ -64,6 +68,10 @@ export default {
 
     showModal() {
       this.$modal.show('default-to-match-day');
+    },
+
+    onMenuItemClicked() {
+      this.isChecked = !this.isChecked;
     },
   },
 };
@@ -104,7 +112,6 @@ h1.stickyHeader {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  padding-bottom: 400px;
 }
 
 #nav {
@@ -236,7 +243,7 @@ a {
 @media (max-width: 48em) {
   #nav a:hover, #nav button:hover,
   #nav a:focus, #nav button:focus {
-    background-color: #42b983;
+    text-decoration: underline;
     cursor: pointer;
   }
 
