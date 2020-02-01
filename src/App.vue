@@ -71,8 +71,6 @@ export default {
     },
 
     onMenuItemClicked() {
-      /* eslint-disable */
-      console.log('test');
       this.isChecked = !this.isChecked;
     },
   },
