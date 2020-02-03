@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <button class="recent-results" @click="showRecentGame">
+      <button class="recent-results animate-flicker" @click="showRecentGame">
         Check {{ getCurrentSelectedLeagueDay }} match results
       </button>
     </div>
@@ -14,8 +14,8 @@
       <div class="l-col">
         <input type="checkbox" id="switch" />
         <label for="switch" @click="onToggleSwitcherState">
-          <span>Average</span>
           <span>Total</span>
+          <span>Average</span>
         </label>
       </div>
     </div>
@@ -148,8 +148,8 @@ export default {
     sortedLeagueStandings() {
       if (this.leagueTable) {
         return this.toggleSwitcherActive
-          ? this.sortByAverage
-          : this.sortByTotal;
+          ? this.sortByTotal
+          : this.sortByAverage;
       }
 
       return false;
@@ -326,12 +326,12 @@ export default {
 .toggle-switch label span {
   position: absolute;
   top: 33%;
-  right: 36px;
+  right: 22px;
   z-index: 9;
 }
 
 .toggle-switch label span:first-child {
-  left: 24px;
+  left: 35px;
   text-align: left;
 }
 
@@ -354,7 +354,7 @@ export default {
 }
 
 .toggle-switch label:active:after {
-  width: 130px;
+  width: 100px;
 }
 
 .container {
@@ -363,10 +363,11 @@ export default {
 }
 
 .recent-results {
+  position: relative;
   display: block;
-  background-color: #42b983;
+  background-color: #262626;
   color: white;
-  padding: 4px 35px;
+  padding: 10px 35px;
   font-size: 12px;
   transition: all 500ms;
   width: 100%;
@@ -374,13 +375,26 @@ export default {
 }
 
 .recent-results:before {
-  content: '';
-  background: url("../assets/ball.svg") no-repeat;
-  width: 15px;
-  height: 15px;
-  background-size: contain;
-  position: absolute;
-  right: 10px;
+   content: "";
+   display: inline-block;
+   width: 0.4em;
+   height: 0.4em;
+   border-top: 0.15em solid #fff;
+   border-right: 0.15em solid #fff;
+   position: absolute;
+   top: 50%;
+   right: 20px;
+   transform: translateY(-50%) rotate(45deg);
+ }
+
+@keyframes flickerAnimation {
+  0%   { right: 20px; }
+  50%  { right: 10px; }
+  100% { right: 20px; }
+}
+
+.animate-flicker:before {
+  animation: flickerAnimation 1s infinite;
 }
 
 .recent-results:hover,
