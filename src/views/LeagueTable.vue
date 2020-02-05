@@ -21,6 +21,8 @@
     </div>
 
     <h3>{{ getSwitchedStateHeading }}</h3>
+    <!-- TODO: pull from build config -->
+    <p class="font-small">Last updated: <strong>05/02/2020 at 09:02</strong></p>
 
     <div class="filter-wrapper">
       <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
@@ -290,6 +292,10 @@ export default {
   overflow: hidden;
   margin-bottom: 0;
   padding: 0;
+}
+
+.font-small {
+  font-size: 12px;
 }
 
 .table-stats {
