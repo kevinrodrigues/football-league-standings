@@ -158,7 +158,7 @@ export default {
     },
 
     getSwitchedStateHeading() {
-      return this.toggleSwitcherActive ? 'Average' : 'Total';
+      return this.toggleSwitcherActive ? 'Total' : 'Average';
     },
 
     getCurrentSelectedLeagueDay() {
