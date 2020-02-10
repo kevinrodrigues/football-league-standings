@@ -4,9 +4,7 @@
 
     <aside class="profile-card">
       <header>
-        <a href="#">
-          <img src="http://lorempixel.com/150/150/sports/" class="hoverZoomLink">
-        </a>
+        <span class="player-icon"></span>
 
         <h1>
           {{ player }}
@@ -26,6 +24,18 @@
 
         <h2>
           Drawn: <span>{{ draw }}</span>
+        </h2>
+
+        <h2>
+          PS: <span>{{ ps }}</span>
+        </h2>
+
+        <h2>
+          Late: <span>{{ late }}</span>
+        </h2>
+
+        <h2>
+          DO: <span>{{ doOut }}</span>
         </h2>
 
         <h2>
@@ -60,6 +70,9 @@ export default {
     lost: Number,
     draw: Number,
     mom: Number,
+    ps: Number,
+    doOut: Number,
+    late: Number,
     total: Number,
     ave: Number,
   },
@@ -123,6 +136,7 @@ export default {
 
   .profile-card header h1 {
     color: #42b983;
+    background-color: transparent;
   }
 
   .profile-card header a {
@@ -186,6 +200,15 @@ export default {
     float: left;
     width: 25%;
     text-align: center;
+  }
+
+  .profile-card .player-icon {
+    width: 80px;
+    height: 80px;
+    display: block;
+    float: none;
+    margin: 10px auto;
+    background: transparent url("../assets/player.svg") no-repeat;
   }
 
   @media screen and (min-height: 480px) {
