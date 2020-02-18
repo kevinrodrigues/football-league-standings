@@ -533,7 +533,7 @@ export default {
               'Sat',
             ],
             mom: [
-              'Unpublished',
+              'Millen 👏',
             ],
             fines: [],
             finalScore: '12 - 0 to Reds',
