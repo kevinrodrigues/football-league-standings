@@ -56,7 +56,7 @@ export default {
             ps: 0,
             doOut: 0,
             late: 0,
-            votes: 17,
+            votes: 20,
             mom: 2,
             total: 0,
             ave: 0,
@@ -252,8 +252,8 @@ export default {
             ps: 0,
             doOut: 0,
             late: 0,
-            votes: 1,
-            mom: 0,
+            votes: 12,
+            mom: 1,
             total: 0,
             ave: 0,
           },
@@ -533,10 +533,10 @@ export default {
               'brana',
             ],
             mom: [
-              'Millen 👏',
+              'Brana 👏',
             ],
             fines: [],
-            finalScore: '14 - 0 to Reds',
+            finalScore: '27 - 12 to Reds',
             matchNumber: 6,
           }];
 
