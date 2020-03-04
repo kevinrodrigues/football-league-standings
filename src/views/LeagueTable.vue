@@ -22,7 +22,7 @@
 
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
-    <p class="font-small">Last updated: <strong>26/02/2020 at 08:49</strong></p>
+    <p class="font-small">Last updated: <strong>04/03/2020 at 22:20</strong></p>
 
     <div class="filter-wrapper">
       <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
@@ -63,6 +63,7 @@
         <th class="hideBelowMid">Late</th>
         <th v-if="isMomCountEnabled">Vs</th>
         <th>MoM</th>
+        <th class="hideBelowMid">MoMS</th>
         <th>Tot</th>
         <th>Ave</th>
       </tr>
@@ -84,6 +85,7 @@
                 doOut: item.doOut,
                 late: item.late,
                 mom: item.mom,
+                mom: item.momSplit,
                 votes: item.votes,
                 total: item.total,
                 ave: item.ave
@@ -103,6 +105,7 @@
           <td class="hideBelowMid">{{ item.late }}</td>
           <td v-if="isMomCountEnabled">{{ item.votes }}</td>
           <td>{{ item.mom }}</td>
+          <td class="hideBelowMid">{{ item.momSplit }}</td>
           <td>{{ item.total }}</td>
           <td>{{ item.ave }}</td>
       </tr>
@@ -211,7 +214,7 @@ export default {
         return this.leagueTable.forEach((item) => {
           // eslint-disable-next-line
           item.total = (item.played * 1) + (item.won * 3) + (item.draw * 1)
-             + (item.mom * 3) + (item.ps * 2) + (item.loy ? item.loy * 1 : 0)
+             + (item.mom * 3) + (item.momSplit * 1) + (item.ps * 2) + (item.loy ? item.loy * 1 : 0)
              + (item.late * -1) + (item.doOut * -1);
 
           // eslint-disable-next-line
