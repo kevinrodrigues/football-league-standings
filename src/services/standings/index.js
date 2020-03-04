@@ -582,7 +582,7 @@ export default {
               'Sat',
             ],
             mom: [
-              'Brana 👏',
+              'Mayu M, Brandon & Tony 👏',
             ],
             fines: ['Arun', 'Gin', 'Kannan'],
             finalScore: '15 - 14 to Reds',
