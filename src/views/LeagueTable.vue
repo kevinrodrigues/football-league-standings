@@ -22,7 +22,7 @@
 
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
-    <p class="font-small">Last updated: <strong>04/03/2020 at 22:20</strong></p>
+    <p class="font-small">Last updated: <strong>11/03/2020 at 16:45</strong></p>
 
     <div class="filter-wrapper">
       <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
@@ -116,7 +116,8 @@
     :finalScore="getFinalScore"
     :mom="getMom"
     :teamSheets="getTeamSheets"
-    :fines="getPlayerFines" />
+    :fines="getPlayerFines"
+    :dropouts="getDropOuts" />
   </div>
 </template>
 
@@ -151,6 +152,7 @@ export default {
       'getTeamSheets',
       'getPlayerFines',
       'getMatchNumber',
+      'getDropOuts',
     ]),
 
     sortedLeagueStandings() {
