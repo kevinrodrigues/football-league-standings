@@ -177,7 +177,7 @@ export default {
             draw: 0,
             lost: 2,
             ps: 0,
-            doOut: 1,
+            doOut: 2,
             late: 0,
             votes: 2,
             mom: 0,
