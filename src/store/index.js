@@ -109,5 +109,15 @@ export default new Vuex.Store({
 
       return false;
     },
+
+    getDropOuts: ({ lastMatchDetails }) => {
+      if (lastMatchDetails.length) {
+        const { dropOuts } = lastMatchDetails.find(el => el);
+
+        return dropOuts.length ? dropOuts.join(', ') : 'No dropouts. 🎉';
+      }
+
+      return false;
+    },
   },
 });

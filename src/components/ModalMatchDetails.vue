@@ -16,6 +16,7 @@
                 <h3>🏆 MoM: <span>{{ mom }}</span></h3>
                 <h3>⚽ Final score: <span>{{ finalScore }}</span></h3>
                 <h3>💰 Late fines: <span>{{ fines }}</span></h3>
+                <h3>🤦🏻‍♂ Dropouts: <span>{{ dropouts }}</span></h3>
             </div>
 
             <button @click="$modal.hide('match-details')" class="modal-close">
@@ -35,6 +36,7 @@ export default {
     finalScore: [String, Boolean],
     teamSheets: [String, Array, Boolean],
     fines: [String, Array, Boolean],
+    dropouts: [String, Array, Boolean],
   },
 };
 </script>
