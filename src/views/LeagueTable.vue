@@ -220,7 +220,7 @@ export default {
              + (item.late * -1) + (item.doOut * -1);
 
           // eslint-disable-next-line
-          item.ave = Math.round((item.total / item.played) * 10) / 10;
+          item.ave = Number(((item.total / item.played) * 10 / 10).toString().match(/^\d+(?:\.\d{0,2})?/))
         });
       }
       return false;
