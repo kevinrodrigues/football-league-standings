@@ -22,7 +22,7 @@
 
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
-    <p class="font-small">Last updated: <strong>29/07/2020 at 15:39</strong></p>
+    <p class="font-small">Last updated: <strong>05/08/2020 at 14:52</strong></p>
 
     <div class="filter-wrapper">
       <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
@@ -216,8 +216,8 @@ export default {
         return this.leagueTable.forEach((item) => {
           // eslint-disable-next-line
           item.total = (item.played * 1) + (item.won * 3) + (item.draw * 1)
-             + (item.mom * 3) + (item.momSplit * 1) + (item.ps * 2) + (item.loy ? item.loy * 1 : 0)
-             + (item.late * -1) + (item.doOut * -1);
+             + (item.mom * 3) + (item.momSplit * 1.5) + (item.ps * 2)
+            + (item.loy ? item.loy * 1 : 0) + (item.late * -1) + (item.doOut * -1);
 
           // eslint-disable-next-line
           item.ave = Number(((item.total / item.played) * 10 / 10).toString().match(/^\d+(?:\.\d{0,2})?/))
