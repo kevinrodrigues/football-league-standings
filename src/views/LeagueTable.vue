@@ -22,7 +22,7 @@
 
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
-    <p class="font-small">Last updated: <strong>05/08/2020 at 14:52</strong></p>
+    <p class="font-small">Last updated: <strong>12/08/2020 at 13:10</strong></p>
 
     <div class="filter-wrapper">
       <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
