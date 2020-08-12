@@ -43,7 +43,7 @@ export default {
             lost: 1,
             ps: 0,
             doOut: 0,
-            late: 0,
+            late: 1,
             votes: 0,
             mom: 0,
             momSplit: 0,
