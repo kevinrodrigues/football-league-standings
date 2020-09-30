@@ -22,7 +22,7 @@
 
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
-    <p class="font-small">Last updated: <strong>23/09/2020 at 14:22</strong></p>
+    <p class="font-small">Last updated: <strong>29/09/2020 at 12:50</strong></p>
 
     <div class="filter-wrapper">
       <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
@@ -112,12 +112,12 @@
     </table>
 
     <match-details
-    :number="getMatchNumber"
-    :finalScore="getFinalScore"
-    :mom="getMom"
-    :teamSheets="getTeamSheets"
-    :fines="getPlayerFines"
-    :dropouts="getDropOuts" />
+      :number="getMatchNumber"
+      :finalScore="getFinalScore"
+      :mom="getMom"
+      :teamSheets="getTeamSheets"
+      :fines="getPlayerFines"
+      :dropouts="getDropOuts" />
   </div>
 </template>
 
@@ -142,6 +142,7 @@ export default {
       'leagueTable',
       'headerIsVisible',
       'lastMatchDetails',
+      'hasDismissedPricesModal',
     ]),
 
     ...mapGetters([
@@ -210,6 +211,12 @@ export default {
       'getLeagueStandings',
       'getLastMatchDetails',
     ]),
+
+    shouldShowPricesModal() {
+      if (!this.hasDismissedPricesModal) {
+        this.$modal.show('league-site-prices');
+      }
+    },
 
     getCalculatedStandings() {
       if (this.leagueTable) {

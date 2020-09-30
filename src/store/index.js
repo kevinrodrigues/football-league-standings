@@ -5,6 +5,7 @@ import {
   SET_LEAGUE_STANDINGS,
   SET_HEADER_VISIBILITY,
   SET_LAST_MATCH_DETAILS,
+  SET_PRICES_SEEN_STATE,
 } from './mutation.types';
 
 Vue.use(Vuex);
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     leagueTable: null,
     headerIsVisible: false,
     lastMatchDetails: [],
+    hasDismissedPricesModal: false,
   },
 
   actions: {
@@ -36,6 +38,10 @@ export default new Vuex.Store({
     setHeaderVisibility: ({ commit }, payload) => {
       commit(SET_HEADER_VISIBILITY, payload);
     },
+
+    hasDismissedPricesModal: ({ commit }, payload) => {
+      commit(SET_PRICES_SEEN_STATE, payload);
+    },
   },
 
   mutations: {
@@ -49,6 +55,10 @@ export default new Vuex.Store({
 
     [SET_LAST_MATCH_DETAILS](state, payload) {
       state.lastMatchDetails = payload;
+    },
+
+    [SET_PRICES_SEEN_STATE](state, payload) {
+      state.hasDismissedPricesModal = payload;
     },
   },
 
