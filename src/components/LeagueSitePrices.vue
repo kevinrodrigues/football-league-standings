@@ -32,9 +32,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.c-league-prices {
-  width: 100%;
-}
-</style>
