@@ -111,6 +111,8 @@
       </tr>
     </table>
 
+    <league-site-prices />
+
     <match-details
       :number="getMatchNumber"
       :finalScore="getFinalScore"
@@ -124,11 +126,13 @@
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
 import MatchDetails from '@/components/ModalMatchDetails.vue';
+import LeagueSitePrices from '@/components/LeagueSitePrices.vue';
 import { MATCH_DETAILS } from '../constants';
 
 export default {
   components: {
     MatchDetails,
+    LeagueSitePrices,
   },
 
   data: () => ({
@@ -204,6 +208,7 @@ export default {
   mounted() {
     this.getLeagueStandings(this.$route.params.day);
     this.getCalculatedStandings();
+    this.shouldShowPricesModal();
   },
 
   methods: {
