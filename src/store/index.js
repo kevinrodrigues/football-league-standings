@@ -15,7 +15,7 @@ export default new Vuex.Store({
     leagueTable: null,
     headerIsVisible: false,
     lastMatchDetails: [],
-    hasDismissedPricesModal: false,
+    hasDismissedPricesModal: true, // temp
   },
 
   actions: {

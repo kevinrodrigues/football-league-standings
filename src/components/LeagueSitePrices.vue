@@ -1,6 +1,12 @@
 <template>
   <div>
-    <modal name="league-site-prices" height="auto" :adaptive="true" :scrollable="true">
+    <modal
+      class="c-league-prices"
+      name="league-site-prices"
+      width="100%"
+      height="auto"
+      :adaptive="true"
+      :scrollable="true">
       <h2>League table pricing</h2>
       £250
       <button>See Prices</button>
