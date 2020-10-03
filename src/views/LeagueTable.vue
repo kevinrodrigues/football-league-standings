@@ -1,8 +1,11 @@
 <template>
   <div>
     <div>
-      <button class="recent-results animate-flicker" @click="showRecentGame">
+      <button class="recent-results recent-results--dark animate-flicker" @click="showRecentGame">
         Check {{ getCurrentSelectedLeagueDay }} match results
+      </button>
+      <button class="recent-results recent-results--purple" @click="showLeaguePricesModal">
+        Website league prices
       </button>
     </div>
 
@@ -23,10 +26,6 @@
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
     <p class="font-small">Last updated: <strong>29/09/2020 at 12:50</strong></p>
-
-    <div class="filter-wrapper">
-      <button @click="onFilterPlayerOpened" class="filter-search">Filter table by player</button>
-    </div>
 
     <div v-if="isFilterOverlayOpen" class="search-overlay block">
       <h3>Filter table by player</h3>
@@ -127,7 +126,12 @@
 import { mapState, mapActions, mapGetters } from 'vuex';
 import MatchDetails from '@/components/ModalMatchDetails.vue';
 import LeagueSitePrices from '@/components/LeagueSitePrices.vue';
-import { MATCH_DETAILS } from '../constants';
+import {
+  MATCH_DETAILS_MODAL,
+  COOKIE_LEAGUE_SITE_PRICES_DISMISSED,
+  LEAGUE_SITE_PRICES_MODAL,
+} from '../constants';
+import { getCookie } from '../utils/helpers';
 
 export default {
   components: {
@@ -218,9 +222,13 @@ export default {
     ]),
 
     shouldShowPricesModal() {
-      if (!this.hasDismissedPricesModal) {
-        this.$modal.show('league-site-prices');
+      if (!this.hasDismissedPricesModal && !getCookie(COOKIE_LEAGUE_SITE_PRICES_DISMISSED)) {
+        this.showLeaguePricesModal();
       }
+    },
+
+    showLeaguePricesModal() {
+      this.$modal.show(LEAGUE_SITE_PRICES_MODAL);
     },
 
     getCalculatedStandings() {
@@ -244,7 +252,7 @@ export default {
 
     showRecentGame() {
       this.getLastMatchDetails(this.$route.params.day);
-      this.$modal.show(MATCH_DETAILS, {
+      this.$modal.show(MATCH_DETAILS_MODAL, {
         title: 'Alert',
         buttons: [
           {
@@ -255,7 +263,7 @@ export default {
     },
 
     hide() {
-      this.$modal.hide(MATCH_DETAILS);
+      this.$modal.hide(MATCH_DETAILS_MODAL);
     },
 
     onFilterPlayerOpened() {
@@ -391,7 +399,6 @@ export default {
 .recent-results {
   position: relative;
   display: block;
-  background-color: #262626;
   color: white;
   padding: 10px 35px;
   font-size: 12px;
@@ -412,6 +419,14 @@ export default {
    right: 20px;
    transform: translateY(-50%) rotate(45deg);
  }
+
+.recent-results--dark {
+  background-color: #262626;
+}
+
+.recent-results--purple {
+  background-color: #9b59b6;
+}
 
 @keyframes flickerAnimation {
   0%   { right: 20px; }
@@ -531,30 +546,6 @@ export default {
   background-color: #4d90fe;
   border-radius: 0 2px 2px 0;
   cursor: pointer;
-}
-
-.filter-search:hover,
-.filter-search:focus {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.filter-wrapper {
-  position: fixed;
-  right: 0;
-  background-color:#42b983;
-  padding: 5px;
-  border: 1px solid rgba(0,0,0, 0.5);
-}
-
-.filter-search {
-  background: transparent url("../assets/filter.svg") no-repeat;
-  text-indent: -999em;
-  width: 30px;
-  height: 30px;
-  border: none;
-  transition: all 200ms;
-  float: right;
 }
 
 .clear-player-search {
