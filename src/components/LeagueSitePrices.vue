@@ -74,6 +74,10 @@ export default {
   padding: 25px !important;
 }
 
+.v--modal-overlay .v--modal-box {
+  overflow: scroll;
+}
+
 .pricing-wrapper {
   display: -webkit-flex;
   display: flex;
@@ -89,6 +93,7 @@ export default {
 .pricing-modal-subheading {
   text-align: center;
   color: white;
+  margin-top: 0;
 }
 
 .pricing-item {
