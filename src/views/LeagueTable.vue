@@ -25,7 +25,7 @@
 
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
-    <p class="font-small">Last updated: <strong>29/09/2020 at 12:50</strong></p>
+    <p class="font-small">Last updated: <strong>08/10/2020 at 10:59</strong></p>
 
     <div v-if="isFilterOverlayOpen" class="search-overlay block">
       <h3>Filter table by player</h3>
