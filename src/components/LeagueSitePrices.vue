@@ -57,7 +57,7 @@ export default {
 
     onDismissModal() {
       this.hasDismissedPricesModal(true);
-      setCookie(COOKIE_LEAGUE_SITE_PRICES_DISMISSED, true);
+      setCookie(COOKIE_LEAGUE_SITE_PRICES_DISMISSED, true, 365);
       this.$modal.hide(LEAGUE_SITE_PRICES_MODAL);
     },
   },
