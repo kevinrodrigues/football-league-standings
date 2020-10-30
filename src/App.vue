@@ -20,12 +20,6 @@
           <li><router-link :to="{
                 name: 'league',
                 params: {
-                  day: 'tuesday'
-                }
-              }" @click.native="onMenuItemClicked()">Tuesday</router-link></li>
-          <li><router-link :to="{
-                name: 'league',
-                params: {
                   day: 'thursday'
                 }
               }" @click.native="onMenuItemClicked()">Thursday</router-link></li>
