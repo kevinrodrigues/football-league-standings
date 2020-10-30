@@ -4,9 +4,6 @@
       <button class="recent-results recent-results--dark animate-flicker" @click="showRecentGame">
         Check {{ getCurrentSelectedLeagueDay }} match results
       </button>
-      <button class="recent-results recent-results--purple" @click="showLeaguePricesModal">
-        Website league prices
-      </button>
     </div>
 
     <h1 :class="[{ 'stickyHeader': !headerIsVisible }]">
@@ -25,7 +22,7 @@
 
     <h3>{{ getSwitchedStateHeading }}</h3>
     <!-- TODO: pull from build config -->
-    <p class="font-small">Last updated: <strong>08/10/2020 at 10:59</strong></p>
+    <p class="font-small">Last updated: <strong>30/10/2020 at 08:45</strong></p>
 
     <div v-if="isFilterOverlayOpen" class="search-overlay block">
       <h3>Filter table by player</h3>
@@ -186,13 +183,13 @@ export default {
     isLoyalityEnabled() {
       const { day } = this.$route.params;
 
-      return day === 'thursday';
+      return day === 'undefined';
     },
 
     isMomCountEnabled() {
       const { day } = this.$route.params;
 
-      return day === 'tuesday';
+      return day === 'thursday';
     },
 
     filteredPlayers() {
@@ -212,7 +209,7 @@ export default {
   mounted() {
     this.getLeagueStandings(this.$route.params.day);
     this.getCalculatedStandings();
-    this.shouldShowPricesModal();
+    // this.shouldShowPricesModal();
   },
 
   methods: {

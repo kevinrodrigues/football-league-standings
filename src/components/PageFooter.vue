@@ -6,12 +6,6 @@
         <li><router-link :to="{
                 name: 'league',
                 params: {
-                  day: 'tuesday'
-                }
-              }">Tuesday</router-link> |</li>
-        <li><router-link :to="{
-                name: 'league',
-                params: {
                   day: 'thursday'
                 }
               }">Thursday</router-link> |</li>
