@@ -4,6 +4,8 @@
       <button class="recent-results recent-results--dark animate-flicker" @click="showRecentGame">
         Check {{ getCurrentSelectedLeagueDay }} match results
       </button>
+
+      <router-link class="rules-link" :to="{ name: 'thursday-rules' }">Rules</router-link>
     </div>
 
     <h1 :class="[{ 'stickyHeader': !headerIsVisible }]">
@@ -405,7 +407,7 @@ export default {
 }
 
 .recent-results:before {
-   content: "";
+   content: '';
    display: inline-block;
    width: 0.4em;
    height: 0.4em;
@@ -553,5 +555,28 @@ export default {
   color: #777;
   background-color: transparent;
   border: none;
+}
+
+.rules-link {
+  font-size: 11px;
+  position: relative;
+  padding: 4px;
+  display: block;
+  background-color: #fee903;
+  color: #000;
+  text-decoration: none;
+}
+
+.rules-link:before {
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-top: 0.15em solid #000;
+  border-right: 0.15em solid #000;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%) rotate(45deg);
 }
 </style>

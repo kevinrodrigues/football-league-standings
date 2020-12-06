@@ -38,6 +38,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "MomVotes" */ '../views/MomVotes.vue'),
   },
   {
+    path: '/thursday-rules/',
+    name: 'thursday-rules',
+    // route level code-splitting
+    // this generates a separate chunk (ThursdayRules.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "MomVotes" */ '../views/ThursdayRules.vue'),
+  },
+  {
     path: '/*',
     component: FourOhFour,
   },
