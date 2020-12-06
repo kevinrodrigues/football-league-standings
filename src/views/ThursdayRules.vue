@@ -78,7 +78,7 @@ export default {
   animation: animateUpDown 1s ease none;
   position: absolute;
   bottom: 0;
-  left: 42%;
+  left: 39%;
   margin: 20px auto 0;
   width: 100px;
 }
