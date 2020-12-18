@@ -895,7 +895,7 @@ export default {
             mom: [
               '👏 - Sageeth',
             ],
-            fines: [],
+            fines: ['Shaggy'],
             dropOuts: [],
             finalScore: '18 - 12 - Whites',
             matchNumber: 4,
