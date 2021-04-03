@@ -943,7 +943,7 @@ export default {
             mom: [
               '👏 - Millen',
             ],
-            fines: ['Shaggy'],
+            fines: [],
             dropOuts: [],
             finalScore: '9 - 6 - Blacks',
             matchNumber: 5,
